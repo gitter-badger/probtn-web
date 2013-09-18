@@ -1,0 +1,42 @@
+html, body { 
+	height: 100%; 
+}
+
+#pizzabtn {
+    position: fixed !important;
+    z-index: 11000 !important;
+}
+
+.pizzabtn_button {
+    
+	background: transparent !important; /*url('PizzaBtn/Images/gray.png') no-repeat !important;*/
+}
+
+#mainButtonImage {
+    z-index: 11000 !important;
+}
+
+#closeButton {
+    display:  block;
+    position: fixed;
+    top:  200px;
+    left: 400px;
+    z-index: 4000 !important;
+}
+
+body { 
+	margin: 0; 
+}
+
+/*@viewport{
+	height: device-height !important;
+}
+@viewport{
+	width:device-width !important;
+}
+@-ms-viewport{
+	height:device-height !important;
+}
+@-ms-viewport{
+	width:device-width !important;
+}*/
