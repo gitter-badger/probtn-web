@@ -1,33 +1,33 @@
-vknopke
+ProfitBtn
 =======
 
-Описание параметров плагина
+Plugin parameters description
 =======
 
-* url - адрес сайта для открытия по нажатию кнопки
-* buttonImage - ссылка на изображение кнопки
-* buttonDragImage - ссылка на изображение перетаскиваемой кнопки
-* buttonWidth - ширина кнопки
-* buttonHeight - высота кнопки
-* buttonDragHeight - высота кнопки при перетаскивании
-* buttonDragWidth - ширина кнопки при перетаскивании
-* closeButtonImage - изображение области закрытия кнопки
-* closeButtonWidth - щирина области закрытия
-* closeButtonHeight - высота области закрытия
-* closeButtonHoverHeight - высота области закрытия при наведении кнопки
-* closeButtonHoverWidth - ширина области закрытия при наведении кнопки
+* url - site url which would be open after button click
+* buttonImage - url for default button image
+* buttonDragImage - url for dragged button image
+* buttonWidth - button width
+* buttonHeight - button height
+* buttonDragHeight - button height when button dragged
+* buttonDragWidth - button width when button dragged
+* closeButtonImage - image for close area
+* closeButtonWidth - close area width
+* closeButtonHeight - close area height
+* closeButtonHoverHeight - close area height when button is under close area
+* closeButtonHoverWidth - close area width when button is under close area
 * fancyboxJsPath - путь к jquery.fancybox.js библиотеке
 * fancyboxCssPath - путь к файлу стилей jquery.fancybox.css
-* mainStyleCss - файл с основными стилями кнопки
-* hammerJsPath - путь к библиотеке hammer.js
-* jqueryPepPath - путь к библиотеке jquery.pep.js
-* buttonAnimationTimeAfterFancybox - длительность анимации кнопки до открытия и после закрытия fancybox
-* buttonOpacity - прозрачность кнопки по умолчанию
-* buttonDragedOpacity - прозрачность кнопки при перетаскивании
-* buttonCloseOpacity - прозрачность области закрытия
-* buttonActiveCloseOpacity - прозрачность области закрытия при наведении кнопки
+* mainStyleCss - url to file with base button styles (css)
+* hammerJsPath - url for hammer.js file
+* jqueryPepPath - url for jquery.pep.js file
+* buttonAnimationTimeAfterFancybox - animation duration for button before opened and after closed fancybox
+* buttonOpacity - default button opacity 
+* buttonDragedOpacity - dragged button opacity
+* buttonCloseOpacity - close area opacity
+* buttonActiveCloseOpacity - close area opacity when button is under close area
 
-Параметры по умолчанию
+Default parameters
 =======
             url: "http://app.ecwid.com/jsp/2557212/m", //site url address
             type: "iframe",
@@ -53,7 +53,7 @@ vknopke
             buttonCloseOpacity: 0.6,
             buttonActiveCloseOpacity: 1
 
-Пример вызова кнопки
+Example of using button plugin
 =======
 
         <script>
@@ -62,7 +62,7 @@ vknopke
         	});
         </script>
 
-Пример сайта с кнопкой
+Demo sites
 =======
 
 * http://vknopke.azurewebsites.net/
