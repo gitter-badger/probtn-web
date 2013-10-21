@@ -27,6 +27,18 @@ html, body {
 body { 
 	margin: 0; 
 }
+#pizzabtn img {
+    margin: 0 auto;
+    display: block;
+}
+#pizzabtn #hintText {
+    clear: both;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    background: gray;
+}
 
 /*@viewport{
 	height: device-height !important;
