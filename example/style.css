@@ -1,6 +1,16 @@
 html, body { 
 	height: 100%; 
 }
+body {
+    overflow: auto !important;
+    -ms-scroll-limit-x-max: 100% !important;
+    -ms-scroll-limit-x-min: auto !important;
+    -ms-scroll-limit-y-max: 100% !important;
+    -ms-scroll-limit-y-min: auto !important;
+    /*-ms-scroll-limit: auto !important;*/
+    touch-action: auto !important;
+    -ms-touch-action: auto !important;
+}
 
 #pizzabtn, #pizzabtn_wrapper {
     position: fixed !important;
