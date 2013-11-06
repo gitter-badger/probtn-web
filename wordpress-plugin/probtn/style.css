@@ -2,7 +2,7 @@ html, body {
 	height: 100%; 
 }
 body {
-    overflow: auto !important;
+    /*overflow: auto !important;*/
     -ms-scroll-limit-x-max: 100% !important;
     -ms-scroll-limit-x-min: auto !important;
     -ms-scroll-limit-y-max: 100% !important;
