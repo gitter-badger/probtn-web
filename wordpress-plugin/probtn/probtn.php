@@ -22,7 +22,7 @@ function probtn_add_my_stylesheet() {
     wp_register_style( 'probtn-style', plugins_url('style.css', __FILE__) );
     wp_enqueue_style( 'probtn-style' );
 	
-	wp_register_script( 'probtn-script', plugins_url('pizzabtn.js', __FILE__) );
+	wp_register_script( 'probtn-script', plugins_url('probtn.js', __FILE__) );
 	wp_enqueue_script( 'probtn-script' );
 	
 	$mainStyleCss = parse_url(plugins_url('style.css', __FILE__));

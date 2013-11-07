@@ -15,7 +15,7 @@ How to add button to your site
 First of all, you should add path to the library:
 
 ```
-<script src="pizzabtn.js"></script>
+<script src="probtn.js"></script>
 ```
 
 And then init button:
