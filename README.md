@@ -1,7 +1,7 @@
 ProfitBtn
 =======
 
-How to use ProfitBtn plugin
+How to use ProfitBtn jQuery plugin
 -----
 
 1. Sign up to admin.probtn.com
@@ -27,6 +27,15 @@ And then init button:
         	});
         </script>
 ```
+
+Update library at your site
+=======
+1. Copy probtn.js and style.css to your site
+
+If previous version of file called pizzabtn.js your should:
+2. Delete pizzabtn.js
+3. In codeof your page rename pizzabtn.js to probtn.js
+
 
 Demo sites
 =======
