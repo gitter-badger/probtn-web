@@ -27,10 +27,8 @@ function probtn_add_my_stylesheet() {
 	
 	$mainStyleCss = parse_url(plugins_url('style.css', __FILE__));
 	$jqueryPepPath = parse_url(plugins_url('libs/jquery.pep.min.js', __FILE__));
-	$fancyboxJsPath = parse_url(plugins_url('libs/fancybox/jquery.fancybox.js', __FILE__));
-	$fancyboxCssPath = parse_url(plugins_url('libs/fancybox/jquery.fancybox.css', __FILE__));
 	
-	wp_register_script( 'probtn-start-script', plugins_url("start_probtn.php?mainStyleCss=".$mainStyleCss["path"]."&jqueryPepPath=".$jqueryPepPath["path"]."&fancyboxJsPath=".$fancyboxJsPath["path"]."&fancyboxCssPath=".$fancyboxCssPath["path"]."", __FILE__) );
+	wp_register_script( 'probtn-start-script', plugins_url("start_probtn.php?mainStyleCss=".$mainStyleCss["path"]."&jqueryPepPath=".$jqueryPepPath["path"]."", __FILE__) );
 	wp_enqueue_script( 'probtn-start-script' );
 }
 
@@ -48,8 +46,15 @@ function probtn_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
-	echo '<div class="wrap">';
-	echo '<iframe src="http://admin.probtn.com/" width="100%" height="700" style="width: 100%; height: 700px;"/>';
-	echo '</div>';
+	?>
+	<div class="wrap">
+	<h2>Description:</h2>
+	<p>Profit button is a new way to add survey, ads or some other additional content without adding any changes to your design.</p>
+	<p>Functionality is implemented like floating button above your site, and after clicking on button would be opened additional modal window with nessesary content.</p>
+	<p>For better usability users can use admin panel with settings and button targeting, and also some detailed statistics and analytics.</p>
+	<h2>Admin panel:</h2>
+	<a href="http://admin.probtn.com" target="_blank">Open admin panel (in new tab)</a>
+	</div>
+	<?php
 }
 ?>

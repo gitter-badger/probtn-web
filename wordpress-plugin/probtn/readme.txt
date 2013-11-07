@@ -18,8 +18,6 @@ Functionality is implemented like floating button above your site, and after cli
 
 For better usability users can use admin panel with settings and button targeting, and also some detailed statistics and analytics.
 
-In this plugin in "Settings" menu in subitem "Profit Button" you can see admin.probtn.com inside iframe to manipulate your button settings.
-
 == Installation ==
 
 1. Upload `probtn` folder to the `/wp-content/plugins/` directory
