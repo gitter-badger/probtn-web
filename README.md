@@ -28,6 +28,9 @@ And then init button:
         </script>
 ```
 
+Rewrite default path for libs
+=======
+
 Update library at your site
 =======
 1. Copy probtn.js and style.css to your site
