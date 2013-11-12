@@ -36,11 +36,15 @@ You can set your own path for plugin additional libraries and path, for example:
 jQuery(document).StartButton({
 		"mainStyleCss": "htpp://example.com/style.css",
 		"jqueryPepPath": "http://example.com/jquery.pep.js",
+		"fancyboxJsPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js",
+		"fancyboxCssPath": "https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css",
 	});
 
 Params list:
 * mainStyleCss - path for button style.css file
 * jqueryPepPath - path for jquery.pep.js file
+* fancyboxJsPath: path for jquery.fancybox.js
+* fancyboxCssPath: path for styles https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css
 
 Update library at your site
 =======
