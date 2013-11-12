@@ -31,6 +31,17 @@ And then init button:
 Rewrite default path for libs
 =======
 
+You can set your own path for plugin additional libraries and path, for example:
+
+jQuery(document).StartButton({
+		"mainStyleCss": "htpp://example.com/style.css",
+		"jqueryPepPath": "http://example.com/jquery.pep.js",
+	});
+
+Params list:
+* mainStyleCss - path for button style.css file
+* jqueryPepPath - path for jquery.pep.js file
+
 Update library at your site
 =======
 1. Copy probtn.js and style.css to your site
