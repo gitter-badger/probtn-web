@@ -69,9 +69,5 @@ Used libraries
 * Fancybox (http://fancyapps.com/fancybox/)
 * jQuery.Pep (http://pep.briangonzalez.org)
 
-Using JavaScript minification tool
-======
 
-To minificate main sj file, possible to use such tools:
-* UglifyJS http://marijnhaverbeke.nl/uglifyjs
 
