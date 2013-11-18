@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5">
+  <name>probtnmodule</name>
+  <creationDate>04-Nov-2013</creationDate>
+  <author>hintsolutions</author>
+  <authorEmail>bis@hintsolutions.ru</authorEmail>
+  <authorUrl>http://admin.probtn.ru</authorUrl>
+  <copyright></copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <version>1.0</version>
+  <description>
+  Profit button is a new way to add survey, ads or some other additional content without adding any changes to your design.
+  
+  Admin panel - http://admin.probtn.ru
+  </description>
+  <files folder="site">
+    <filename>CHANGELOG.php</filename>
+    <filename module="mod_probtnmodule">mod_probtnmodule.php</filename>
+  </files>
+</extension>
