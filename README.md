@@ -15,7 +15,7 @@ How to add button to your site (simple way when your site don't have jquery)
 First of all, you should add path to the library:
 
 ```
-<script src="/script.js"></script>
+<script src="https://pizzabtn.herokuapp.com/javascripts/script.js"></script>
 ```
 
 And thats all.
@@ -26,7 +26,7 @@ How to add button to your site (simple way when your site have jquery)
 First of all, you should add path to the library:
 
 ```
-<script src="/script-no-jquery.js"></script>
+<script src="https://pizzabtn.herokuapp.com/javascripts/script-no-jquery.js"></script>
 ```
 
 And thats all.
