@@ -9,8 +9,7 @@ How to use ProfitBtn jQuery plugin
 3. Choose the site to promote in your application.
 4. Integrate ProButton with your site using the following instructions:
 
-How to add button to your site (simple way when your site don't have jquery)
-=======
+### How to add button to your site (simple way when your site don't have jquery)
 
 First of all, you should add path to the library:
 
@@ -20,8 +19,7 @@ First of all, you should add path to the library:
 
 And thats all.
 
-How to add button to your site (simple way when your site have jquery)
-=======
+### How to add button to your site (simple way when your site have jquery)
 
 First of all, you should add path to the library:
 
@@ -31,8 +29,7 @@ First of all, you should add path to the library:
 
 And thats all.
 
-How to add button to your site 
-=======
+### How to add button to your site 
 
 First of all, you should add path to the library:
 
@@ -55,12 +52,14 @@ Rewrite default path for libs
 
 You can set your own path for plugin additional libraries and path, for example:
 
+```
 jQuery(document).StartButton({
-		"mainStyleCss": "htpp://example.com/style.css",
+		"mainStyleCss": "http://example.com/style.css",
 		"jqueryPepPath": "http://example.com/jquery.pep.js",
 		"fancyboxJsPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js",
 		"fancyboxCssPath": "https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css",
 	});
+```
 
 Params list:
 * mainStyleCss - path for button style.css file
@@ -68,8 +67,8 @@ Params list:
 * fancyboxJsPath: path for jquery.fancybox.js
 * fancyboxCssPath: path for styles https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css
 
-Update library at your site
-=======
+## Update library at your site
+
 1. Copy probtn.js and style.css to your site
 
 If previous version of file called pizzabtn.js your should:
@@ -77,16 +76,14 @@ If previous version of file called pizzabtn.js your should:
 3. In codeof your page rename pizzabtn.js to probtn.js
 
 
-Demo sites
-=======
+## Demo sites
 
 * http://probtn.com/
 * http://vknopke.azurewebsites.net/
 * http://vknopke.azurewebsites.net/example2/
 * http://vknopke.azurewebsites.net/example3/
 
-Used libraries
-=======
+## Used libraries
 
 * Fancybox (http://fancyapps.com/fancybox/)
 * jQuery.Pep (http://pep.briangonzalez.org)
