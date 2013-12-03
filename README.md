@@ -47,8 +47,7 @@ And then init button:
         </script>
 ```
 
-Rewrite default path for libs
-=======
+## Rewrite default path for libs
 
 You can set your own path for plugin additional libraries and path, for example:
 
