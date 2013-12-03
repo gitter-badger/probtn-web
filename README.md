@@ -71,8 +71,9 @@ Params list:
 1. Copy probtn.js and style.css to your site
 
 If previous version of file called pizzabtn.js your should:
+
 2. Delete pizzabtn.js
-3. In codeof your page rename pizzabtn.js to probtn.js
+3. In code of your page rename pizzabtn.js to probtn.js
 
 
 ## Demo sites
