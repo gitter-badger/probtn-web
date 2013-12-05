@@ -10,10 +10,13 @@ ProfitBtn
 
 ### How to add button to your site 
 
-First of all, you should add path to the library (require jQuery 1.9 or later):
+First of all, you should add path to the library. Make sure you also add the jQuery library (require jQuery 1.9 or later). For example:
 
 ```
-<script src="probtn.js"></script>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/probtn.js"></script>
+</head>
 ```
 
 And then init button:
@@ -21,7 +24,9 @@ And then init button:
 ```
         <script>
         	$(document).ready(function() {
-        		$(document).StartButton();
+        		$(document).StartButton({
+        			'mainStyleCss':'/style.css'
+        		});
         	});
         </script>
 ```
