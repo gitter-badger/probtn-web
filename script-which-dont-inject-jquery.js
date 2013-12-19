@@ -1,5 +1,30 @@
-document.write("<script>$.noConflict();<\/script>");
-document.write("<script src='https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js'><\/script>");
-document.write("<script src='https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js'><\/script>");
-document.write("<script src='https://pizzabtn.herokuapp.com/javascripts/probtn.js'><\/script>");
-document.write("<script>jQuery(document).ready(function($){$(document).StartButton({'mainStyleCss':'https://pizzabtn.herokuapp.com/stylesheets/probtn.css'});});<\/script>");
+LoadAll();
+
+function LoadAll() {
+		InjectScript("https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js", function() {
+			InjectScript("https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js", function() {
+				InjectScript("https://pizzabtn.herokuapp.com/javascripts/probtn.js", function() {
+					$.noConflict();
+					
+					jQuery(document).StartButton({
+				        "mainStyleCss": "https://pizzabtn.herokuapp.com/stylesheets/probtn.css",
+				        "jqueryPepPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js",
+				        "fancyboxJsPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js",
+				        "fancyboxCssPath": "https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css",
+				    });
+				});
+			});
+		});
+}
+
+function InjectScript(name, callback) {
+	var s = document.createElement('script');
+	s.src = name;
+	s.onload = function() {
+		try {
+			callback();
+		} catch(ex) {};
+		//this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(s);
+}
