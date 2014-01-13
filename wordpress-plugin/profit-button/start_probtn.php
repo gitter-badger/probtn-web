@@ -14,7 +14,13 @@ header("content-type: application/javascript");
     }
 ?>
 
-FloatingButtonFunc();
+<?php 
+if (!isset($_GET['state']) || $_GET['state']=="on" || $_GET['state']=='') {
+?>
+    FloatingButtonFunc();
+<?php 
+};
+?>
 
 function runYourFunctionWhenJQueryIsLoaded() {
     if (window.$){      
@@ -29,10 +35,14 @@ function FloatingButtonFunc() {
 	    jQuery(document).StartButton({
 		    "mainStyleCss": "https://pizzabtn.herokuapp.com/stylesheets/probtn.css",
 		    "jqueryPepPath": "<?php echo $_GET["jqueryPepPath"]; ?>",
-            <?php echo checkParamExist("ButtonImage","probtn_image") ?>
-            <?php echo checkParamExist("ButtonDragImage","probtn_image") ?>
-            <?php echo checkParamExist("ButtonOpenImage","probtn_image") ?>
-            <?php echo checkParamExist("ButtonInactiveImage","probtn_image") ?>
+            <?php 
+            ?>
+                <?php echo checkParamExist("ButtonImage","probtn_image") ?>
+                <?php echo checkParamExist("ButtonDragImage","probtn_image") ?>
+                <?php echo checkParamExist("ButtonOpenImage","probtn_image") ?>
+                <?php echo checkParamExist("ButtonInactiveImage","probtn_image") ?>            
+            <?php 
+            //}; ?>
             <?php echo checkParamExist("ContentURL","probtn_contenturl") ?>
             <?php echo checkParamExist("HintText","probtn_hinttext") ?>
             'domain': 'wordpress.plugin'

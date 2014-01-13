@@ -72,7 +72,7 @@ add_action( 'admin_menu', 'probtn_menu' );
 
 /** Step 1. */
 function probtn_menu() {    
-    add_menu_page( 'Profit Button', 'Profit Button', 'manage_options', 'profit_button_page', 
+    add_menu_page( 'Floating Button', 'Floating Button', 'manage_options', 'profit_button_page', 
     'probtn_options', plugins_url( 'profit-button/images/profit_button_icon_3_1.png' ), 166 ); 
 }
 
@@ -188,7 +188,7 @@ ul#icons span.ui-icon {
 	height: 110px;">
 		<img alt="logo" style="width: 100px; height: auto; display: inline-block; float: left;" 
 			src="<?php echo plugins_url('/profit-button/images/logo.png'); ?>"/>
-		<h1 style="line-height: 70px; margin-left: 20px; display: inline-block;width: auto;">Profit Button description</h1>
+		<h1 style="line-height: 70px; margin-left: 20px; display: inline-block;width: auto;">Floating Button</h1>
 	</div>
 	
 
@@ -203,6 +203,11 @@ ul#icons span.ui-icon {
         if (($options['source']==null) || ($options['source']=='')) {
             $options['source'] = 'probtn.com';
         };
+
+        if (($options['state']==null) || ($options['state']=='')) {
+            $options['state'] = 'on';
+        };
+
         if ($options['source'] == 'probtn.com') {
         ?>
         <script>
@@ -215,6 +220,26 @@ ul#icons span.ui-icon {
         };
         ?>
         <table class="form-table">
+
+            <tr>
+                <th scope="row">Button state</th>
+                <td>
+                    <fieldset>
+                        <label>                          
+                            <input type="radio" name="probtn_settings[state]" class=""
+                                value="on"<?php checked( 'on' == $options['state'] ); ?> />
+                            <span class="localSettings_item description">On</span>
+                        </label>
+                        <br/>
+                        <label>                          
+                            <input type="radio" name="probtn_settings[state]" class=""
+                                value="off"<?php checked( 'off' == $options['state'] ); ?> />                            
+                            <span class="description probtnSettings_item">Off</span>
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+
             <tr>
                 <th scope="row">Button settings source</th>
                 <td>
@@ -290,11 +315,11 @@ ul#icons span.ui-icon {
                                         or
                                         &nbsp;&nbsp;
                                         <label class="radio inline">
-                                            <input id="ButtonTextRadio" onclick="" 
-                                            type="radio" name="button_image_radio" value="">
+                                            <input id="customImageRadioButton" onclick="jQuery('#customImageRadioButton').val(jQuery('#custom_image_text').val());" name="probtn_settings[probtn_image]"  
+                                            type="radio" name="button_image_radio" value="<?php echo (isset($options['probtn_custom_image']) && $options['probtn_custom_image'] != '') ? $options['probtn_custom_image'] : ''; ?>"<?php checked( $options['probtn_custom_image'] == $options['probtn_image'] ); ?>>
                                         </label>
                                         &nbsp;&nbsp;
-                                        <input onclick="" type="text" id="cs_ButtonImage" name="probtn_settings[probtn_custom_image]" placeholder="Your image URL" value="<?php echo (isset($options['probtn_custom_image']) && $options['probtn_custom_image'] != '') ? $options['probtn_custom_image'] : ''; ?>">
+                                        <input onclick="" type="text" id="custom_image_text" name="probtn_settings[probtn_custom_image]" placeholder="Your image URL" value="<?php echo (isset($options['probtn_custom_image']) && $options['probtn_custom_image'] != '') ? $options['probtn_custom_image'] : ''; ?>">
                                     </div>
                     </td>
                 </tr>
