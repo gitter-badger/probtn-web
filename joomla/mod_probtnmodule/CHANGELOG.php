@@ -44,6 +44,9 @@ ______________________________________________
 
 04-Nov-2013 hintsolutions
  ! Startup
+ 
+14-Jan-2014 hintsolutions
++ Added module settings (allowing to set local button params)
 
 */
 }//--This is the END

@@ -1,20 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.1" encoding="utf-8"?>
 <extension type="module" version="2.5">
   <name>probtnmodule</name>
   <creationDate>04-Nov-2013</creationDate>
   <author>hintsolutions</author>
   <authorEmail>bis@hintsolutions.ru</authorEmail>
-  <authorUrl>http://admin.probtn.ru</authorUrl>
+  <authorUrl>hhttp://hintsolutions.ru</authorUrl>
   <copyright></copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-  <version>1.0</version>
-  <description>
-  Profit button is a new way to add survey, ads or some other additional content without adding any changes to your design.
-  
-  Admin panel - http://admin.probtn.ru
-  </description>
+  <version>1.1</version>
+  <description>Profit button is a new way to add survey, ads or some other additional content without adding any changes to your design.</description>
   <files folder="site">
     <filename>CHANGELOG.php</filename>
     <filename module="mod_probtnmodule">mod_probtnmodule.php</filename>
+    <filename>mod_probtnmodule.xml</filename>
   </files>
+    <config>
+    <fields name="params">
+        <fieldset name="basic">
+            <field name="state" type="radio" default="0" label="Button state" description="">
+                <option value="0">On</option>
+                <option value="1">Off</option>
+            </field>
+            <field name="source" type="radio" default="0" label="Settings source" description="">
+                <option value="0">Settings from probtn.com</option>
+                <option value="1">local settings</option>
+            </field>
+            <field name="probtn_image" type="url" default="http://pizzabtn.herokuapp.com/Chart_button_grey_norm.png" label="Enter image URL" description="" size="40" />            
+            <field name="probtn_hinttext" type="text" default="Press me" label="Button hint text" description="" size="40" />
+            <field name="probtn_contenturl" type="url" default="http://probtn.com/" label="Enter content URL" description="" size="40" />            
+        </fieldset>
+    </fields>
+    </config>
 </extension>
