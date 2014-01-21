@@ -95,6 +95,7 @@ If previous version of file called pizzabtn.js your should:
 ## FAQ
 
 Q: What if I don't want that on every page on my site?
+
 A: You can manually add code
 ```
 jQuery(document).StartButton
@@ -102,6 +103,7 @@ jQuery(document).StartButton
 only on nessesary pages. And if you use Joomla module, you can set in settings nessesary menu items, where button would be shown.
 
 Q: Or what if I want different ones on different pages?
+
 A: Then you can manually override button settings. For example:
 ```
 jQuery(document).StartButton({
@@ -112,4 +114,5 @@ jQuery(document).StartButton({
 Will ovveride ContentURL param and on button click would be opened fancybox with http://example.com site.
 
 Q: Or what if I want several on one page?
+
 A: Such option isn't available at current version (case several buttons on one page will case some conflicts).
