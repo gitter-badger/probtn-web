@@ -116,3 +116,7 @@ Will ovveride ContentURL param and on button click would be opened fancybox with
 Q: Or what if I want several on one page?
 
 A: Such option isn't available at current version (case several buttons on one page will case some conflicts).
+
+
+## Wordpressl example:
+![ScreenShot](http://ps.w.org/profit-button/assets/screenshot-1.png?rev=841326)
