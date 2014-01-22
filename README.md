@@ -118,5 +118,5 @@ Q: Or what if I want several on one page?
 A: Such option isn't available at current version (case several buttons on one page will case some conflicts).
 
 
-## Wordpressl example:
+## Wordpress example:
 ![ScreenShot](https://dl.dropboxusercontent.com/u/3482508/wordpress-screenshot-1.gif)
