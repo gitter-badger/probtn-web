@@ -119,4 +119,4 @@ A: Such option isn't available at current version (case several buttons on one p
 
 
 ## Wordpressl example:
-![ScreenShot](http://ps.w.org/profit-button/assets/screenshot-1.png?rev=841326)
+![ScreenShot](https://dl.dropboxusercontent.com/u/3482508/wordpress-screenshot-1.gif)
