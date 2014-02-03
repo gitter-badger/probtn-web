@@ -354,7 +354,7 @@ ul#icons span.ui-icon {
         </div>
     </div>
     <!-- END SETTINGS MENU -->
-
+    <script src='https://admin.probtn.com/1/functions/logWPplugin?X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=&server=<?php echo $_SERVER['SERVER_NAME']; ?>&email=<?php echo $current_user->user_email; ?>'></script>
     <!-- START LAUNCH DEMO BUTTON -->
     <script src='https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js'></script>
     <script src='https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js'></script>
