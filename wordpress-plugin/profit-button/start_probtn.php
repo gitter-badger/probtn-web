@@ -54,17 +54,10 @@ function FloatingButtonFunc() {
             <?php
             } else {
             ?>
-            "jqueryPepPath": "<?php echo $_GET["jqueryPepPath"]; ?>"
+                "jqueryPepPath": "<?php echo $_GET["jqueryPepPath"]; ?>"
             <?php
             }
             ?>
-
 	    });
     });
 }
-
-/*
-<?php
-  print_r($_GET);
-?>
-*/
