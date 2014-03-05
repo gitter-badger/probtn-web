@@ -3,7 +3,7 @@
  * Plugin Name: Floating Button
  * Plugin URI: http://probtn.com
  * Description: Floating Button is an interactive element that used to show custom content inside your application. If the button is tapped then the popup with Browser would open. The url in the Browser is set using settings on our server.
- * Version: 1.9.2
+ * Version: 1.9.3
  * Author: hintsolutions
  * Author URI: http://probtn.com
  * License: -
@@ -419,7 +419,8 @@ ul#icons span.ui-icon {
     <div id="probtnSettings" style="display: none;">
         <!-- START QUICK ACCOUNT -->
         <h3 style="cursor: pointer;" id="quick_account_toggle">Quick account <small>&#9650;</small></h3>
-        <p>Automatically creates and updates an account on probtn.com. Only basic settings will be available.</p>
+        <!--<p>Automatically creates and updates an account on probtn.com. Only basic settings will be available.</p>-->
+        <p>Allow you to change basic settings (picture, url). Account will be created automatically, you don't need to register yourself.</p>
         <script>
             jQuery(document).ready(
             function ($) {
@@ -592,7 +593,10 @@ ul#icons span.ui-icon {
 
         <!-- START SETUP TUTORIAL -->
         <h3 style="cursor: pointer;" id="setup_tutorial_toggle">Full account <small>&#9660;</small></h3>
-        <p>Manually create a full account. All features are available, but managable via probtn.com</p>
+        <!--<p>Manually create a full account. All features are available, but managable via probtn.com</p>-->
+        <p>Provide full customization options. You need to register on 
+            <a href="https://admin.probtn.com/login/new" target="_blank">the main site</a></p>
+        <p><strong>Note:</strong> to upgrade from an existing quick account to full account, open <a href="https://admin/probtn.com/login" target="_blank">login page</a> and request password recovery for quick account's email.</p>
         <script>
             jQuery(document).ready(
             function ($) {
