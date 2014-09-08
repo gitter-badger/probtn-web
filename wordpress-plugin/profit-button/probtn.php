@@ -1,9 +1,12 @@
 <?php
+
+error_reporting(E_ERROR);
+
 /**
  * Plugin Name: Floating Button
  * Plugin URI: http://probtn.com
  * Description: Floating Button is an interactive element that used to show custom content inside your application. If the button is tapped then the popup with Browser would open. The url in the Browser is set using settings on our server.
- * Version: 1.9.3
+ * Version: 1.9.7
  * Author: hintsolutions
  * Author URI: http://probtn.com
  * License: -
@@ -52,8 +55,11 @@ function probtn_add_my_stylesheet() {
     wp_register_script( 'jquerypep-script', 'https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js', array( 'jquery' ));
     wp_enqueue_script( 'jquerypep-script' );
 
-    $mainStyleCss = parse_url('https://pizzabtn.herokuapp.com/stylesheets/probtn.css');
-    $jqueryPepPath = parse_url("https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js");
+    //$mainStyleCss = parse_url('https://pizzabtn.herokuapp.com/stylesheets/probtn.css');
+    $mainStyleCss = 'https://pizzabtn.herokuapp.com/stylesheets/probtn.css';
+    //$jqueryPepPath = parse_url("https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js");
+    //print_r($jqueryPepPath);
+    $jqueryPepPath = "https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js";
 
     wp_register_script( 'probtn-script', 'https://pizzabtn.herokuapp.com/javascripts/probtn.js', array( 'jquery', 'jquerypep-script' ));
     //wp_register_script( 'probtn-script', plugins_url('probtn.js', __FILE__), array( 'jquery' ));
@@ -67,15 +73,87 @@ function probtn_add_my_stylesheet() {
 }
 
 function start_button_script() {
+
+    $mainStyleCss = 'https://pizzabtn.herokuapp.com/stylesheets/probtn.css';
+    $jqueryPepPath = "https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js";
+
     $options = get_option( 'probtn_settings' );
     function urlify($key, $val) {
         return urlencode($key) . '=' . urlencode($val);
     }
     $url = '';
-    $url .= implode('&amp;', array_map('urlify', array_keys($options), $options));
-    wp_register_script( 'probtn-start-script', plugins_url("start_probtn.php?mainStyleCss=".$mainStyleCss["path"]."&jqueryPepPath=".$jqueryPepPath["path"]."&".$url, __FILE__), array( 'jquery' ) );
+	if (gettype($options)=="array") {
+		$url .= implode('&amp;', array_map('urlify', array_keys($options), $options));
+	};
+    wp_register_script( 'probtn-start-script', plugins_url("start_probtn.php?mainStyleCss=".$mainStyleCss."&jqueryPepPath=".$jqueryPepPath."&".$url, __FILE__), array( 'jquery' ) );
     wp_enqueue_script( 'probtn-start-script' );
 }
+
+function probtninit_function() {
+    $options = get_option( 'probtn_settings' );
+    if (($options['state']==null) || ($options['state']=='')) {
+        $options['state'] = 'on';
+    };
+    if (($options['probtn_image']==null) || ($options['probtn_image']=='')) {
+        $options['probtn_image'] = 'http://admin.probtn.com/eqwid_btn_nonpress.png';
+    };
+    if (($options['source']==null) || ($options['source']=='')) {
+        $options['source'] = 'probtn.com';
+        $source = 1;
+    } else {
+        $source = 0;
+    }
+
+    //$mainStyleCss = parse_url('https://pizzabtn.herokuapp.com/stylesheets/probtn.css');
+    //$jqueryPepPath = parse_url("https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js");
+    $mainStyleCss = 'https://pizzabtn.herokuapp.com/stylesheets/probtn.css';
+    $jqueryPepPath = "https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js";
+
+    if ($options['state']=="off") {
+$output = '
+<script>
+FloatingButtonFunc();
+
+function runYourFunctionWhenJQueryIsLoaded() {
+    if (window.$){
+        FloatingButtonFunc();
+    } else {
+        setTimeout(runYourFunctionWhenJQueryIsLoaded, 50);
+    }
+}
+
+function FloatingButtonFunc() {    
+    jQuery(document).ready(function() {
+        setTimeout(InitButton, 2500);
+    });
+}
+
+function InitButton() {
+    jQuery(document).StartButton({
+		    "mainStyleCss": "https://pizzabtn.herokuapp.com/stylesheets/probtn.css",
+            ';
+            if ($source==1) {
+                $output = $output. '
+                "jqueryPepPath": "'.$jqueryPepPath.'",
+                "ButtonImage": "'.$options['probtn_image'].'",
+                "ButtonDragImage": "'.$options['probtn_image'].'",
+                "ButtonOpenImage": "'.$options['probtn_image'].'",
+                "ButtonInactiveImage": "'.$options['probtn_image'].'",
+                "domain": "wordpress.plugin",
+                "ContentURL": "'.$options['probtn_contenturl'].'",
+                "HintText": "'.$options['probtn_hinttext'].'"
+                ';
+            } else {
+                $output = $output. '"jqueryPepPath": "'.$jqueryPepPath.'"';
+            }
+             $output = $output. '}); } </script>';
+            return $output;
+	    } else {
+	        return "";
+	    }
+}
+
+add_shortcode('floating_button', 'probtninit_function');
 
 add_action('admin_init', 'probtn_register_settings');
 
@@ -235,7 +313,8 @@ ul#icons span.ui-icon {
         <p>
         Floating button is a new way to add survey, ads or some other additional content without adding any changes to your design.<br/>
         Functionality is implemented like floating button above your site, and after clicking on button would be opened additional modal window with nessesary content.<br/>
-        For better usability users can use admin panel with settings and button targeting, and also some detailed statistics and analytics.
+        For better usability users can use admin panel with settings and button targeting, and also some detailed statistics and analytics.<br/>
+        Shortcode to insert plugin - <strong><i>[floating_button]</i></strong>
         </p>
     </div>
 
@@ -392,6 +471,65 @@ ul#icons span.ui-icon {
     </div>
     <!-- END SETTINGS MENU -->
 
+        <!--START SELECT MENU ITEMS -->
+        <h3 style="cursor: pointer;" id="">Menu assignment <small>&#9660;</small></h3>
+        <p>You can select menu items, where button would be shown\hidden, or by default it would be shown at all pages.</p>
+
+       <form method="post" action="options.php">
+            <?php
+                settings_fields( 'probtn_settings' );
+                do_settings_sections( __FILE__ );
+                //get the older values, wont work the first time
+                $options = get_option( 'probtn_settings' );
+                //print_r($menu_options);
+            ?> 
+           <input type="checkbox" name="probtn_settings[menu_show]" value="on" <?php checked( 'on' == $options["menu_show"]); ?> />
+                <span>Show button only at selected menu pages</span><br/>
+           <br/>
+           <input type="submit" value="Save" class="button-primary"/>
+           </form>
+
+        <?php
+        // Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
+        // This code based on wp_nav_menu's code to get Menu ID from menu slug
+
+        $menu_name = 'custom_menu_slug';
+        $locations = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
+        //print_r($locations);        
+
+        foreach ($locations as $menu) {
+            ?>
+            <form method="post" action="options.php">
+            <?php
+                settings_fields( 'probtn_menu_settings' );
+                do_settings_sections( __FILE__ );
+                //get the older values, wont work the first time
+                $menu_options = get_option( 'probtn_menu_settings' );
+                //print_r($menu_options);
+            ?>            
+            <h4><?php echo $menu->name; ?></h4>
+                <input type="checkbox" name="probtn_menu_settings[<?php echo $menu->slug; ?>_all]" value="on" <?php checked( 'on' == $menu_options[$menu->slug."_all"]); ?> />
+                <span>All items</span><br/>
+            <?php                
+            $items = wp_get_nav_menu_items($menu->slug);  
+            //print_r($items);
+            foreach ($items as $item) {
+                ?>
+                <input type="checkbox" name=probtn_menu_settings[<?php echo $menu->slug; ?>_<?php echo $item->ID; ?>]" value="<?php echo $item->ID; ?>" <?php checked( $item->ID == $menu_options[$menu->slug."_".$item->ID]); ?>/>
+                <span><?php echo $item->title; ?></span><br/>
+                <?php
+            }
+            ?>
+                <br/>
+                <input type="submit" value="Save" class="button-primary"/>
+            </form>
+            <?php 
+        }       
+        ?>
+        
+        <!--END SELECT MENU -->
+
+
     <!-- START LAUNCH DEMO BUTTON -->
     <script src='https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js'></script>
     <script src='https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js'></script>
@@ -532,64 +670,6 @@ ul#icons span.ui-icon {
         <!-- END QUICK ACCOUNT -->
         <script src='https://admin.probtn.com/1/functions/logWPplugin?X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=&server=<?php echo $_SERVER['SERVER_NAME']; ?>&email=<?php echo $current_user->user_email; ?>'></script>
 
-        
-        <!--START SELECT MENU ITEMS -->
-        <h3 style="cursor: pointer;" id="">Menu assignment <small>&#9660;</small></h3>
-        <p>You can select menu items, where button would be shown\hidden, or by default it would be shown at all pages.</p>
-
-       <form method="post" action="options.php">
-            <?php
-                settings_fields( 'probtn_settings' );
-                do_settings_sections( __FILE__ );
-                //get the older values, wont work the first time
-                $options = get_option( 'probtn_settings' );
-                //print_r($menu_options);
-            ?> 
-           <input type="checkbox" name="probtn_settings[menu_show]" value="on" <?php checked( 'on' == $options["menu_show"]); ?> />
-                <span>Show button only at selected menu pages</span><br/>
-           <br/>
-           <input type="submit" value="Save" class="button-primary"/>
-           </form>
-
-        <?php
-        // Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
-        // This code based on wp_nav_menu's code to get Menu ID from menu slug
-
-        $menu_name = 'custom_menu_slug';
-        $locations = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
-        //print_r($locations);        
-
-        foreach ($locations as $menu) {
-            ?>
-            <form method="post" action="options.php">
-            <?php
-                settings_fields( 'probtn_menu_settings' );
-                do_settings_sections( __FILE__ );
-                //get the older values, wont work the first time
-                $menu_options = get_option( 'probtn_menu_settings' );
-                //print_r($menu_options);
-            ?>            
-            <h4><?php echo $menu->name; ?></h4>
-                <input type="checkbox" name="probtn_menu_settings[<?php echo $menu->slug; ?>_all]" value="on" <?php checked( 'on' == $menu_options[$menu->slug."_all"]); ?> />
-                <span>All items</span><br/>
-            <?php                
-            $items = wp_get_nav_menu_items($menu->slug);  
-            //print_r($items);
-            foreach ($items as $item) {
-                ?>
-                <input type="checkbox" name=probtn_menu_settings[<?php echo $menu->slug; ?>_<?php echo $item->ID; ?>]" value="<?php echo $item->ID; ?>" <?php checked( $item->ID == $menu_options[$menu->slug."_".$item->ID]); ?>/>
-                <span><?php echo $item->title; ?></span><br/>
-                <?php
-            }
-            ?>
-                <br/>
-                <input type="submit" value="Save" class="button-primary"/>
-            </form>
-            <?php 
-        }       
-        ?>
-        
-        <!--END SELECT MENU -->
 
         <!-- START SETUP TUTORIAL -->
         <h3 style="cursor: pointer;" id="setup_tutorial_toggle">Full account <small>&#9660;</small></h3>
