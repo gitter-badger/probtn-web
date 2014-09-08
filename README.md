@@ -79,10 +79,33 @@ If previous version of file called pizzabtn.js your should:
 2. Delete pizzabtn.js
 3. In code of your page rename pizzabtn.js to probtn.js
 
+## Add iframe commands support
+
+You can add support of functions, which allow you to control button and modal window state from page shown in button's iframe.
+To add this support you need include js code from iframe.js file at your page (example of integration is shown at iframe.html page with available commands).
+
+```
+	var proBtn = {
+		hide: function() {
+			try {
+				parent.proBtn.hide();
+				parent.proBtn.hideContent();
+			} catch(ex) {}
+		},
+		hideContent: function() {
+			try {			
+			parent.proBtn.hideContent(); } catch(ex) {}
+		},
+		performAction: function() {
+			try { parent.proBtn.performAction(); } catch(ex) {}
+		}
+	}
+```
 
 ## Demo sites
 
 * http://probtn.com/
+* http://probtnexample1.azurewebsites.net/
 * http://vknopke.azurewebsites.net/
 * http://vknopke.azurewebsites.net/example2/
 * http://vknopke.azurewebsites.net/example3/

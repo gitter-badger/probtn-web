@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script>
+	var proBtn = {
+		hide: function() {
+			try {
+				parent.proBtn.hide();
+				parent.proBtn.hideContent();
+			} catch(ex) {}
+		},
+		hideContent: function() {
+			try {			
+			parent.proBtn.hideContent(); } catch(ex) {}
+		},
+		performAction: function() {
+			try { parent.proBtn.performAction(); } catch(ex) {}
+		}
+	}
+</script>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>ProBtn</h1>
+  </div>
+  <div data-role="first" class="ui-content">
+    <button type="button" value="someValue" onclick="proBtn.hide();">hide</button>
+<br>
+<button type="button" value="someValue" onclick="proBtn.hideContent();">hide content</button>
+<br>
+<button type="button" value="someValue" onclick="proBtn.performAction();">perform action</button>
+<br>
+<br>
+<button type="button" value="someValue" onclick="proBtn.performAction();proBtn.hide();">perform action then hide</button>
+
+</div>
+</body>
+</html> 
