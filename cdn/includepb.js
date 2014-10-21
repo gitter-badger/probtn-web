@@ -2,7 +2,7 @@ if (!window.jQuery) {
     console.log("No jquery");
     document.write("<script src=\"http://code.jquery.com/jquery-1.9.1.js\"><\/script>");
 } else {
-    console.log("is jquery");
+    console.log("Is jquery");
 }
 document.write(
     "<script>("
