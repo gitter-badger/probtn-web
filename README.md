@@ -38,9 +38,9 @@ You can set your own path for plugin additional libraries and path, for example:
 ```
 jQuery(document).StartButton({
 		"mainStyleCss": "https://pizzabtn.herokuapp.com/stylesheets/probtn.css",
-		"jqueryPepPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.pep.min.js",
-		"fancyboxJsPath": "https://pizzabtn.herokuapp.com/javascripts/jquery.fancybox.js",
-		"fancyboxCssPath": "https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css",
+		"jqueryPepPath": "https://cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/javascripts/jquery.pep.min.js",
+		"fancyboxJsPath": "https://cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/javascripts/jquery.fancybox.js",
+		"fancyboxCssPath": "https://cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/stylesheets/jquery.fancybox.css",
 	});
 ```
 
@@ -48,14 +48,24 @@ Params list:
 * mainStyleCss - path for button style.css file
 * jqueryPepPath - path for jquery.pep.js file
 * fancyboxJsPath: path for jquery.fancybox.js
-* fancyboxCssPath: path for styles https://pizzabtn.herokuapp.com/stylesheets/jquery.fancybox.css
+* fancyboxCssPath: path for styles https://cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/stylesheets/jquery.fancybox.css
+
+### How to add button to your site
+
+First of all, you should add path to the library:
+
+```
+<script src="//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/includepb.min.js"></script>
+```
+
+And thats all.
 
 ### How to add button to your site (simple way when your site don't have jquery)
 
 First of all, you should add path to the library:
 
 ```
-<script src="https://pizzabtn.herokuapp.com/javascripts/script.js"></script>
+<script src="//pizzabtn.herokuapp.com/javascripts/script.js"></script>
 ```
 
 And thats all.
@@ -65,7 +75,7 @@ And thats all.
 First of all, you should add path to the library:
 
 ```
-<script src="https://pizzabtn.herokuapp.com/javascripts/script-which-dont-inject-jquery.js"></script>
+<script src="//pizzabtn.herokuapp.com/javascripts/script-which-dont-inject-jquery.js"></script>
 ```
 
 And thats all.
