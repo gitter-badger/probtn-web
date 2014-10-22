@@ -205,7 +205,7 @@ function probtn_options() {
     }
     ?>
 
-<script src="http://yandex.st/jquery/form/3.14/jquery.form.min.js"></script>
+<script src="//yandex.st/jquery/form/3.14/jquery.form.min.js"></script>
 
 <style>
     #wpfooter {
