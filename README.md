@@ -14,7 +14,7 @@ First of all, you should add path to the library. Make sure you also add the jQu
 
 ```
 <head>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/probtn.js"></script>
 </head>
 ```
