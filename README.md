@@ -10,7 +10,7 @@ ProfitBtn
 
 ### How to add button to your site
 
-First of all, you should add path to the library:
+First of all, you should add (for example before </body>):
 
 ```
 <script src="//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/includepb.min.js"></script>
