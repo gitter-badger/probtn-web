@@ -13,7 +13,7 @@ ProfitBtn
 First of all, you should add (for example before ```</body>```):
 
 ```
-<script src="//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/includepb.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.1/includepb.min.js"></script>
 ```
 
 And thats all.
