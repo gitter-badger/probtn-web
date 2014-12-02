@@ -1,1 +1,1562 @@
-(function(e){try{var t="Unbekannt";var n="";var r="";var i="";if(screen.width){r=screen.width?screen.width:"";i=screen.height?screen.height:"";n+=""+r+" x "+i}var s=navigator.appVersion;var o=navigator.userAgent;var u=navigator.appName;var a=""+parseFloat(navigator.appVersion);var f=parseInt(navigator.appVersion,10);var l,c,h;if((c=o.indexOf("Opera"))!=-1){u="Opera";a=o.substring(c+6);if((c=o.indexOf("Version"))!=-1){a=o.substring(c+8)}}else if((c=o.indexOf("MSIE"))!=-1){u="Microsoft Internet Explorer";a=o.substring(c+5)}else if((c=o.indexOf("Chrome"))!=-1){u="Chrome";a=o.substring(c+7)}else if((c=o.indexOf("Safari"))!=-1){u="Safari";a=o.substring(c+7);if((c=o.indexOf("Version"))!=-1){a=o.substring(c+8)}}else if((c=o.indexOf("Firefox"))!=-1){u="Firefox";a=o.substring(c+8)}else if((l=o.lastIndexOf(" ")+1)<(c=o.lastIndexOf("/"))){u=o.substring(l,c);a=o.substring(c+1);if(u.toLowerCase()==u.toUpperCase()){u=navigator.appName}}if((h=a.indexOf(";"))!=-1)a=a.substring(0,h);if((h=a.indexOf(" "))!=-1)a=a.substring(0,h);f=parseInt(""+a,10);if(isNaN(f)){a=""+parseFloat(navigator.appVersion);f=parseInt(navigator.appVersion,10)}var p=/Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(s);var d=navigator.cookieEnabled?true:false;if(typeof navigator.cookieEnabled=="undefined"&&!d){document.cookie="testcookie";d=document.cookie.indexOf("testcookie")!=-1?true:false}var v=t;var m=[{s:"Windows 3.11",r:/Win16/},{s:"Windows 95",r:/(Windows 95|Win95|Windows_95)/},{s:"Windows ME",r:/(Win 9x 4.90|Windows ME)/},{s:"Windows 98",r:/(Windows 98|Win98)/},{s:"Windows CE",r:/Windows CE/},{s:"Windows 2000",r:/(Windows NT 5.0|Windows 2000)/},{s:"Windows XP",r:/(Windows NT 5.1|Windows XP)/},{s:"Windows Server 2003",r:/Windows NT 5.2/},{s:"Windows Vista",r:/Windows NT 6.0/},{s:"Windows 7",r:/(Windows 7|Windows NT 6.1)/},{s:"Windows 8.1",r:/(Windows 8.1|Windows NT 6.3)/},{s:"Windows 8",r:/(Windows 8|Windows NT 6.2)/},{s:"Windows NT 4.0",r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/},{s:"Windows ME",r:/Windows ME/},{s:"Android",r:/Android/},{s:"Open BSD",r:/OpenBSD/},{s:"Sun OS",r:/SunOS/},{s:"Linux",r:/(Linux|X11)/},{s:"iOS",r:/(iPhone|iPad|iPod)/},{s:"Mac OS X",r:/Mac OS X/},{s:"Mac OS",r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/},{s:"QNX",r:/QNX/},{s:"UNIX",r:/UNIX/},{s:"BeOS",r:/BeOS/},{s:"OS/2",r:/OS\/2/},{s:"Search Bot",r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}];try{for(var g in m){var y=m[g];if(y.r.test(o)){v=y.s;break}}var b=t;if(/Windows/.test(v)){b=/Windows (.*)/.exec(v)[1];v="Windows"}switch(v){case"Mac OS X":b=/Mac OS X (10[\.\_\d]+)/.exec(o)[1];break;case"Android":b=/Android ([\.\_\d]+)/.exec(o)[1];break;case"iOS":b=/OS (\d+)_(\d+)_?(\d+)?/.exec(s);b=b[1]+"."+b[2]+"."+(b[3]|0);break}}catch(w){v=t}var E=navigator.userAgent.match(/iPad/i)!=null;e.jscd={screen:n,screenWidth:r,screenHeight:i,browser:u,browserVersion:a,browserMajorVersion:f,mobile:p,os:v,osVersion:b,cookies:d,isiPad:E}}catch(w){}})(this);(function(e){function t(){var e="1234";if(i("probtnId")!=null){}else{var t=new Date;t=t.getTime();e=t.toString()+"-"+navigator.userAgent.toString().hashCode();r("probtnId",e,365)}e=i("probtnId");return e}function r(e,t,n){var r="";if(n){var i=new Date;i.setTime(i.getTime()+n*24*60*60*1e3);r="; expires="+i.toGMTString()}document.cookie=e+"="+t+r+"; path=/"}function i(e){var t=e+"=";var n=document.cookie.split(";");for(var r=0;r<n.length;r++){var i=n[r];while(i.charAt(0)==" ")i=i.substring(1,i.length);if(i.indexOf(t)==0)return i.substring(t.length,i.length)}return null}function s(e){r(e,"",-1)}var n="b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b";String.prototype.hashCode=function(){var e=0,t,n;if(this.length==0)return e;for(t=0,l=this.length;t<l;t++){n=this.charCodeAt(t);e=(e<<5)-e+n;e|=0}return e};e.fn.StartButton=function(r){function l(){var t=e("<img/>",{id:"closeButton",src:s.CloseImage,"class":"close_pro_button_normal",css:{position:"fixed",display:"none"}}).prependTo("body");t.active=false;t.rect={};t.css({"-webkit-transform":"translateZ(0)","-moz-transform":"translateZ(0)","-ms-transform":"translateZ(0)","-o-transform":"translateZ(0)",transform:"translateZ(0)","-webkit-backface-visibility":"hidden","-moz-backface-visibility":"hidden","-ms-backface-visibility":"hidden","backface-visibility":"hidden","-webkit-perspective":1e3,"-moz-perspective":1e3,"-ms-perspective":1e3,perspective:1e3,"transition-property":"opacity, width, height, left, top","timing-function":"linear","-webkit-transition-property":"opacity, width, height, left, top","-webkit-timing-function":"linear","-moz-transition-property":"opacity, width, height, left, top","-moz-timing-function":"linear","-o-transition-property":"opacity, width, height, left, top","-o-timing-function":"linear"});t.center=function(){var t=e("body");var n=s.ClosePosition.X;var r=s.ClosePosition.Y;this.css("top",(e(window).height()-this.height())*r+"px");this.css("left",(t.innerWidth()-this.width())*n+e(window).scrollLeft()+"px")};t.show=function(){var e=this;e.center();setTimeout(function(){e.stop(true,true).fadeIn(s.CloseShowDuration*1e3)},s.CloseShowDelay*1e3)};t.hide=function(){var e=this;setTimeout(function(){e.stop(true,true).fadeOut(s.CloseHideDuration*1e3)},s.CloseHideDelay*1e3)};t.setTransitionDuration=function(e){var t=e+"s";this.css({"transition-duration":t,"-webkit-transition-duration":t,"-moz-transition-duration":t,"-o-transition-duration":t})};t.overlayActive=function(){var e=this;var t=e.position();e.setTransitionDuration(s.CloseActiveDuration);setTimeout(function(){e.css({opacity:s.CloseActiveOpacity,width:s.CloseActiveSize.W,height:s.CloseActiveSize.H,left:t.left-(s.CloseActiveSize.W-s.CloseSize.W)/2,top:t.top-(s.CloseActiveSize.H-s.CloseSize.H)/2})},s.CloseActiveDelay*1e3)};t.overlayUnactive=function(){var t=this;var n=e("body");var r=s.ClosePosition.X;var i=s.ClosePosition.Y;var o=(e(window).height()-this.height())*i+"px";var a=(n.innerWidth()-u.width())*r+e(window).scrollLeft();t.setTransitionDuration(s.CloseUnactiveDuration);setTimeout(function(){var e={opacity:s.CloseOpacity,width:s.CloseSize.W,height:s.CloseSize.H,left:a,top:o};t.css(e)},s.CloseUnactiveDelay*1e3)};t.setTransitionDuration(s.CloseActiveDuration);t.center();return t}function c(t,n){function i(){var t=e("#pizzabtn_wrapper");var n={width:"auto",height:"auto",position:"fixed"};t.css(n);if(r!==null&&r!==undefined){r()}}var r=t;if(n!==null){setTimeout(i,n)}else{i()}}function h(t){var n=e("#pizzabtn_wrapper");var r={width:e(window).width(),height:e(window).height(),position:"fixed"};n.css(r);try{if(e("#pizzabtn").offset().left-e(window).scrollLeft()>n.width()){var i=n.width()-e("#pizzabtn").width();e("#pizzabtn").css({left:i+"px"})}}catch(s){}try{if(e("#pizzabtn").offset().top-e(window).scrollTop()>n.height()){var o=n.height()-e("#pizzabtn").height();e("#pizzabtn").css({top:o+"px"})}}catch(s){}try{t()}catch(s){}}function p(){var r=e("<div/>",{id:"pizzabtn_wrapper"}).prependTo("body");var i={width:e(window).width(),height:e(window).height(),position:"fixed"};r.css(i);var u=e("#pizzabtn");if(u.length===0){u=e("<div/>",{id:"pizzabtn"}).prependTo(r)}u.addClass("pizzabtn_normal");u.css({display:"none","-webkit-transform":"translateZ(0)","-moz-transform":"translateZ(0)","-ms-transform":"translateZ(0)","-o-transform":"translateZ(0)",transform:"translateZ(0)","-webkit-backface-visibility":"hidden","-moz-backface-visibility":"hidden","-ms-backface-visibility":"hidden","backface-visibility":"hidden","-webkit-perspective":1e3,"-moz-perspective":1e3,"-ms-perspective":1e3,perspective:1e3,"-webkit-transition":"top, left "+s.buttonAnimationTimeAfterFancybox+"ms linear","-moz-transition":"top, left "+s.buttonAnimationTimeAfterFancybox+"ms linear","-ms-transition":"top, left "+s.buttonAnimationTimeAfterFancybox+"ms linear","-o-transition":"top, left "+s.buttonAnimationTimeAfterFancybox+"ms linear",transition:"top, left "+s.buttonAnimationTimeAfterFancybox+"ms linear",width:s.ButtonSize.W,height:s.ButtonSize.H});var f=e("<img/>",{id:"pizzabtnImg",src:s.ButtonImage,css:{width:s.ButtonSize.W,height:s.ButtonSize.H,opacity:s.ButtonOpacity,"transition-property":"opacity, width, height","timing-function":"linear","-webkit-transition-property":"opacity, width, height","-webkit-timing-function":"linear","-moz-transition-property":"opacity, width, height","-moz-timing-function":"linear","-o-transition-property":"opacity, width, height","-o-timing-function":"linear"}}).appendTo(pizzabtn);var l=e("<span/>",{id:"hintText",css:{opacity:0,"transition-property":"opacity","timing-function":"linear","-webkit-transition-property":"opacity","-webkit-timing-function":"linear","-moz-transition-property":"opacity","-moz-timing-function":"linear","-o-transition-property":"opacity","-o-timing-function":"linear","transition-duration":s.HintShowDuration+"s","-webkit-transition-duration":s.HintShowDuration+"s","-moz-transition-duration":s.HintShowDuration+"s","-o-transition-duration":s.HintShowDuration+"s"},html:s.HintText.replace(/ /g,"&nbsp;")}).appendTo(pizzabtn);pizzabtn.hintTextActive=false;c(function(){},s.MinimizeWrapperTime);l.makeInvisible=function(){this.css({"transition-duration":s.HintHideDuration+"s","-webkit-transition-duration":s.HintHideDuration+"s","-moz-transition-duration":s.HintHideDuration+"s","-o-transition-duration":s.HintHideDuration+"s"});this.css("opacity",0)};u.center=function(){var t=e("#pizzabtn_wrapper");this.css("top",(t.innerHeight()-this.height())/2+e(window).scrollTop()+"px");this.css("left",(t.innerWidth()-this.width())/2+e(window).scrollLeft()+"px")};u.show=function(){var e=this;setTimeout(function(){e.stop(true,true).fadeIn(s.ButtonShowDuration*1e3)},s.ButtonShowDelay*1e3)};u.hide=function(){var e=jQuery("#pizzabtn");setTimeout(function(){e.stop(true,true).fadeOut(s.ButtonHideDuration*1e3)},s.ButtonHideDelay*1e3)};window.proBtn={};window.proBtn.hide=u.hide;window.proBtn.hideContent=function(){e.fancybox.close()};window.proBtn.performAction=function(){if(s.CampaignID!==null){e.getJSON("https://pizzabtn.herokuapp.com/1/functions/performAction?DeviceType=web&DeviceUID="+t()+"&X-ProBtn-Token="+n+"&CampaignID="+s.CampaignID+"&random="+Math.random()+"&callback=?",function(e){console.log(e)})}};u.dragAnimate=function(){f.attr("src",s.ButtonDragImage);setTimeout(function(){f.css({"transition-duration":s.ButtonDragDuration+"s","-webkit-transition-duration":s.ButtonDragDuration+"s","-moz-transition-duration":s.ButtonDragDuration+"s","-o-transition-duration":s.ButtonDragDuration+"s"});f.css({opacity:s.ButtonDragOpacity,width:s.ButtonDragSize.W,height:s.ButtonDragSize.H})},s.ButtonDragDelay*1e3)};u.undragAnimate=function(){f.attr("src",s.ButtonImage);setTimeout(function(){f.css({"transition-duration":s.ButtonUndragDuration+"s","-webkit-transition-duration":s.ButtonUndragDuration+"s","-moz-transition-duration":s.ButtonUndragDuration+"s","-o-transition-duration":s.ButtonUndragDuration+"s"});f.css({opacity:s.ButtonOpacity,width:s.ButtonSize.W,height:s.ButtonSize.H})},s.ButtonUndragDelay*1e3)};u.showHint=function(){var t=this;setTimeout(function(){l.css(o);t.hintTextActive=true;var n=(e("#hintText").width()-s.ButtonSize.W)/2;e("#hintText").css("margin-left","-"+n+"px")},s.HintLaunchDelay*1e3)};u.hideHint=function(){var e=this;l.makeInvisible();setTimeout(function(){e.animateDuringHintHide()},100);e.hintTextActive=false};u.hideHintDelay=function(){setTimeout(function(){l.makeInvisible()},s.HintLaunchDuration*1e3)};u.animateDuringHintHide=function(){var e=this;var t=l.outerWidth();var n=(t-s.ButtonSize.W)/2;if(n>0){e.css({width:s.ButtonSize.W,height:s.ButtonSize.H,left:e.position().left+n})}};try{var h=(window.innerHeight-s.ButtonSize.H/2)*s.ButtonPosition.Y;var p=(e("body").innerWidth()-s.ButtonSize.W/2)*s.ButtonPosition.X+e(window).scrollLeft()+"px";u.css({left:p,top:h,position:"absolute"})}catch(d){}a();return u}if(window.jscd.browserMajorVersion>"8"||window.jscd.browser!=="Microsoft Internet Explorer"){var i="1.0";var s=e.extend({MinimizeWrapperTime:40,OpenExternal:false,CampaignID:null,NeverClose:true,MaxHeight:0,MaxWidth:0,type:"iframe",domain:"",fancyboxJsPath:"//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.js",fancyboxCssPath:"//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css",mainStyleCss:"//pizzabtn.herokuapp.com/stylesheets/probtn.css",jqueryPepPath:"//cdn.jsdelivr.net/jquery.pep/0.6.3/jquery.pep.min.js",buttonAnimationTimeAfterFancybox:400,HideAfterFirstShow:false,LoadFancyboxCSS:true,ContentURL:"http://app.ecwid.com/jsp/2557212/m",BaseInsets:{T:4,B:4,L:4,R:4},ButtonEnabled:false,ButtonVisible:false,ButtonOpenInsets:{T:32,B:32,L:32,R:32},ButtonPosition:{X:.5,Y:.5},ButtonSize:{W:64,H:64},ButtonDragSize:{W:68,H:68},ButtonOpenSize:{W:64,H:64},ButtonInactiveSize:{W:64,H:64},ButtonOpacity:.8,ButtonDragOpacity:1,ButtonOpenOpacity:1,ButtonInactiveOpacity:.5,ButtonImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/gray.png",ButtonDragImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",ButtonOpenImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",ButtonInactiveImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",ClosePosition:{X:.5,Y:.5},CloseSize:{W:64,H:64},CloseActiveSize:{W:72,H:72},CloseOpacity:.6,CloseActiveOpacity:1,CloseImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/close.png",CloseActiveImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/close.png",HintInsets:{T:4,B:4,L:4,R:4},HintLabelInsets:{T:4,B:4,L:4,R:4},HintImageInsets:{T:8,B:8,L:8,R:8},HintText:"Press me",HintFont:{Family:"Arial",Size:18},HintFontColor:{R:1,G:1,B:1,A:1},VendorText:"",VendorSite:"#",VendorTextFont:{Family:"Arial",Size:10},VendorTextColor:{R:1,G:1,B:1,A:1},VendorOpacity:.4,VendorColor:{R:0,G:0,B:0,A:1},HintOpacity:.8,HintImage:"//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/hint.png",HintArrowSize:{W:8,H:8},HintArrowOffset:{T:0,B:0,L:0,R:0},HintArrowImageT:"",HintArrowImageB:"",HintArrowImageL:"",HintArrowImageR:"",ContentSize:{X:"90%",Y:"90%"},IsManualSize:false,ContentInsets:{T:-2,B:-2,L:-2,R:-2},ContentWebViewInsets:{T:12,B:12,L:12,R:12},ContentImageInsets:{T:32,B:32,L:32,R:32},ContentOpacity:1,ContentBackOpacity:1,ContentBackColor:{R:0,G:0,B:0,A:1},ContentActivityColor:{R:0,G:0,B:0,A:1},ContentImage:"",ContentArrowSize:{W:14,H:14},ContentArrowOffset:{T:8,B:8,L:9,R:9},ContentArrowImageT:"",ContentArrowImageB:"",ContentArrowImageL:"",ContentArrowImageR:"",DefaultDuration:.1,DefaultDelay:0,OpenDuration:.2,OpenDelay:.5,CloseDuration:.2,CloseDelay:.5,ButtonShowDuration:.2,ButtonShowDelay:0,ButtonHideDuration:.2,ButtonHideDelay:0,ButtonDragDuration:.1,ButtonDragDelay:0,ButtonUndragDuration:.2,ButtonUndragDelay:0,ButtonInactiveDuration:.1,ButtonInactiveDelay:5,ButtonInertiaSpeed:512,ButtonInertiaSpeedMin:32,ButtonInertiaSpeedMax:1024,ButtonInertiaFactor:6,CloseShowDuration:.1,CloseShowDelay:0,CloseHideDuration:.2,CloseHideDelay:0,CloseActiveDuration:.1,CloseActiveDelay:0,CloseUnactiveDuration:.1,CloseUnactiveDelay:0,HintLaunchDuration:3e4,HintLaunchDelay:0,HintShowDuration:.1,HintShowDelay:0,HintHideDuration:.2,HintHideDelay:0,ContentShowDuration:.1,ContentShowDelay:0,ContentHideDuration:.2,ContentHideDelay:0,HideInFrame:true,ZCustomCss:""},r);var o={opacity:s.HintOpacity,"font-size":s.HintFont.Size,"font-family":s.HintFont.Family,color:"white",padding:"4px",background:"url('"+s.HintImage+"')"};if(s.HintText==""||s.HintText==null){o.display="none";o.opacity="0.0"}var u=l();function a(){var t={width:window.availWidth,height:window.availHeight};if(window.jscd.browser==="Microsoft Internet Explorer"){t.overflow="auto"}e("body").css(t)}function f(){return e(window).width()>e(window).height()}e(document).ready(function(){function w(t){console.log("orientationChange");h(function(){pizzabtn.css("left","5px");pizzabtn.css("top","5px");c(function(){},s.MinimizeWrapperTime);if(e.fancybox.isOpen){b=true;e.fancybox.close()}})}function x(){if(s.HideInFrame===true&&window.self!==window.top){}else{T()}}function T(){function n(){try{if(typeof e.pep.toggleAll=="function"){r()}else{e.getScript(s.jqueryPepPath,r)}}catch(t){e.getScript(s.jqueryPepPath,r)}}function r(){function r(){function w(){return'<div id="button_fancybox_title">'+s.VendorText+"</div>"}var n=f()&&window.jscd.mobile,r=t.position(),i=r.top,o=r.left,u=window.innerWidth,a=window.innerHeight,l="0px",h="0px",p=(u+s.ButtonSize.W)/2,d=(a+s.ButtonSize.H)/2;if(d<=i){l=a-s.ButtonSize.H+"px"}if(p<=o){h=u-s.ButtonSize.W+"px"}if(s.ContentInsets.T<0||s.ContentInsets.B<0||s.ContentInsets.L<0||s.ContentInsets.R<0){var v=n?[s.ButtonSize.H/4,s.ButtonSize.H/4+5,s.ButtonSize.H/4,s.ButtonSize.H/4+5]:[s.ButtonSize.H+5,s.ButtonSize.H/2,s.ButtonSize.H+5,s.ButtonSize.H/2];if(window.jscd.mobile&&s.ButtonSize.H>70){v=[s.ButtonSize.H/8,s.ButtonSize.H/8,s.ButtonSize.H/8,s.ButtonSize.H/8]}else{if(s.ButtonSize.H>70){v=[70,70,70,70]}}}else{var v=[s.ContentInsets.T,s.ContentInsets.R,s.ContentInsets.B,s.ContentInsets.L]}var m={property:n?"left":"top",currentValue:n?o:i,finishValue:n?h:l};var g=e("#pizzabtn").offset().left;var y=e("#pizzabtn").offset().top;C("ContentShowed",1);e.pep.toggleAll(false);var b={href:s.ContentURL,sandbox:"allow-same-origin allow-scripts allow-popups allow-forms",type:"iframe",autoCenter:true,titlePosition:"inside",scrolling:"no",margin:v,height:"100%",minWidth:100,minHeight:100,iframe:{sandbox:"allow-same-origin allow-scripts allow-popups allow-forms",preload:false,scrolling:"yes"},helpers:{overlay:{locked:false},title:{type:"inside"}},beforeLoad:function(){e("#hintText").hide();e(".fancybox-iframe").first().attr("sandbox","allow-same-origin allow-scripts allow-popups allow-forms");t.css(m.property,m.finishValue);if(m.property=="top"){t.css("left",g+"px")}else{t.css("top",y+"px")}if(window.jscd.os==="iOS"){e(document.body).bind("touchmove",function(e){e.preventDefault();e.stopPropagation();e.returnValue=false})}e("html").css("overflow","hidden")},afterShow:function(){e(".fancybox-iframe").first().attr("sandbox","allow-same-origin allow-scripts allow-popups allow-forms");e(".fancybox-iframe").first().contents().find("html").css("visibility","visible !important");t.bind("click",e.fancybox.close)},afterClose:function(){c(function(){},s.MinimizeWrapperTime);if(window.jscd.os==="iOS"){e(document.body).unbind("touchmove")}e("html").css("overflow","auto");t.unbind("click");e.pep.toggleAll(true);t.css(m.property,m.currentValue+"px");if(s.HideAfterFirstShow==true){C("Closed",1);C("Hidded",1);t.hide()}}};if(s.VendorText!==""&&s.ButtonEnabled===true&&s.ButtonVisible===true){try{b.titleShow=true;b.title="<style>.fancybox-title-inside-wrap {color: rgba("+s.VendorColor.R+","+s.VendorColor.G+","+s.VendorColor.B+","+s.VendorColor.A+"); text-align: center; } </style><a style='font-family: "+s.VendorTextFont.Family+"; font-size: "+s.VendorTextFont.Size+"px; color: rgba("+s.VendorTextColor.R+","+s.VendorTextColor.G+","+s.VendorTextColor.B+","+s.VendorTextColor.A+")' href='"+s.VendorSite+"' target='_blank'>"+s.VendorText+"</a>"}catch(E){}}if(s.IsManualSize===true){b.width=s.ContentSize.X;b.height=s.ContentSize.Y}else{}if(s.MaxWidth>0){b.maxWidth=s.MaxWidth}if(s.MaxHeight>0){b.maxHeight=s.MaxHeight}if(s.OpenExternal===true){c(function(){t.css(m.property,m.finishValue);if(m.property=="top"){t.css("left",g+"px")}else{t.css("top",y+"px")}if(window.jscd.os==="iOS"){e(document.body).bind("touchmove",function(e){e.preventDefault();e.stopPropagation();e.returnValue=false})}if(window.jscd.os==="iOS"){e(document.body).unbind("touchmove")}e("html").css("overflow","auto");t.unbind("click");e.pep.toggleAll(true);window.open(s.ContentURL,"_blank")},s.MinimizeWrapperTime)}else{e.fancybox.open(b)}}C();L();if(s.ButtonEnabled&&s.ButtonVisible){t.show()}if(s.ButtonVisible){C("Showed",1)}else{}t.hideHintDelay();t.showHint();var n=false;t.moved=false;t.pep({useCSSTranslation:false,constrainTo:"parent",cssEaseString:"cubic-bezier(0, .50, .50, 1)",cssEaseDuration:600,velocityMultiplier:1,startThreshold:[1,1],droppable:"#closeButton",initiate:a,start:function(){h(function(){if(t.moved==false){t.dragAnimate()}t.moved=true;if(t.hintTextActive){t.hideHint()}if(s.NeverClose==false){u.show()}C("Moved",1);c(function(){},s.MinimizeWrapperTime)})},drag:function(){h(function(){var r=t[0].getBoundingClientRect();var i=u[0].getBoundingClientRect();if(r.top+r.height>e(window).height()){}var s=!(r.right<i.left||r.left>i.right||r.bottom<i.top||r.top>i.bottom);if(s&&i.width!==0){if(!n){u.overlayActive();n=true}}else{if(n){u.overlayUnactive();n=false}}})},stop:function(){if(!t.moved){h(function(){r()})}else{c(function(){},s.MinimizeWrapperTime);if(n){C("Closed",1);C("Hidded",1);t.hide()}else{t.undragAnimate()}}u.hide();t.moved=false;n=false}})}e("head").append('<link rel="stylesheet" href="'+s.mainStyleCss+'" type="text/css" />');console.log("window.jscd");console.log(window.jscd);if(window.jscd.os==="iOS"){e("body").addClass("btn_os_ios");if(window.jscd.isiPad===true){e("body").addClass("btn_device_ipad")}else{e("body").addClass("btn_device_iphone")}}if(window.jscd.mobile){e("head").append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: scroll !important;  } </style>")}else{e("head").append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hide !important; } </style>")}e("#closeButton").attr("src",s.CloseImage);if(s.NeverClose==false){e("head").append(e("<style/>",{id:"probtn_style",type:"text/css",html:["#pizzabtn.pizzabtn_normal { display: block; clear: both; position: device-fixed !important; }",".close_pro_button_normal{ width:"+s.CloseSize.W+"px; height:"+s.CloseSize.H+"px; opacity:"+s.CloseOpacity+"; display: block; clear: both; }"].join("\n")}))}var t=p();if(typeof e.fancybox=="function"){n()}else{e.getScript(s.fancyboxJsPath,n)}}function N(t,n,r,i){e.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateUserStatistic?BundleID="+i+"&Version=1.0&DeviceType=web&CampaignID="+s.CampaignID+"&DeviceUID="+r+"&localDomain="+d+"&Statistic="+'{"'+t+'": "'+n+'"}&'+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",function(){}).done(function(){}).fail(function(){}).always(function(){})}function C(e,n,r){var i="1234";if(e==""||e==null){e="Opened"}if(n==""||n==null){n=1}i=t();if(r==""||r==null){N(e,n,i,l)}else{k(e,n,i,l)}}function k(t,n,r,i){e.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateCustomStatistic?BundleID="+i+"&DeviceType=web&CampaignID="+s.CampaignID+"&Version=1.0&DeviceUID="+r+"&localDomain="+d+"&Statistic="+'{"'+t+'": "'+n+'"}&'+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",function(){}).done(function(){}).fail(function(){}).always(function(){})}function L(){try{C("Resolution",jscd.screen,1);C("Browser",jscd.browser,1);C("BrowserVersion",jscd.browserVersion,1);C("OS",jscd.os+" "+jscd.osVersion,1)}catch(e){}}var l=document.domain.replace("www.","");if(l==""||l==null){l="example.com"}var d=l;if(s.domain!=""&&s.domain!=null){l=s.domain}else{}var v="onorientationchange"in window;var m=v?"orientationchange":"resize";var g=window.innerHeight;var y=window.innerWidth;var b=false;e(window).bind(m,w);var E=null;var S="";e.get("http://ip-api.com/json",function(u){var a=u.as.toLowerCase();if(a.indexOf("mts")>-1){E="MTS RUS"}if(a.indexOf("beeline")>-1){E="Beeline"}if(a.indexOf("vimpel")>-1){E="Beeline"}if(E===null){S="https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+l+"&DeviceType=web&DeviceUID="+t()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+i+"&X-ProBtn-Token="+n+"&random="+Math.random()+"&callback=?"}else{S="https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+l+"&DeviceType=web&DeviceUID="+t()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+i+"&X-ProBtn-Token="+n+"&random="+Math.random()+"&MobileOperator="+E+"&callback=?"}e.getJSON(S,function(t){try{try{t.result.HintText=HintText}catch(n){}e.extend(s,t.result,r);if(s.LoadFancyboxCSS===true){e("head").append('<link rel="stylesheet" href="'+s.fancyboxCssPath+'" type="text/css" />')}if(s.ZCustomCss!==""&&s.ZCustomCss!==null&&s.ZCustomCss!==undefined){e("head").append('<style type="text/css">'+s.ZCustomCss+"</style>")}o={opacity:s.HintOpacity,"font-size":s.HintFont.Size,"font-family":s.HintFont.Family,color:"rgb("+s.HintFontColor.R*100+"%, "+s.HintFontColor.G*100+"%, "+s.HintFontColor.B*100+"%)","padding-left":s.HintLabelInsets.L,"padding-top":s.HintLabelInsets.T,"padding-right":s.HintLabelInsets.R,"padding-bottom":s.HintLabelInsets.B,background:"url('"+s.HintImage+"')"};if(s.HintText==""||s.HintText==null){o.display="none";o.opacity="0.0"}}catch(n){}}).done(function(){}).fail(function(e){console.log("Fail:");console.dir(e)}).always(x)},"jsonp");})}else{console.log("IE8 not supported.")}}})(jQuery)
+// Browser data - from
+// http://stackoverflow.com/questions/9514179/how-to-find-the-operating-system-version-using-javascript
+(function (window) {
+    try {
+        var unknown = 'Unbekannt';
+
+        // screen
+        var screenSize = '';
+        var width = '';
+        var height = '';
+        if (screen.width) {
+            width = (screen.width) ? screen.width : '';
+            height = (screen.height) ? screen.height : '';
+            screenSize += '' + width + " x " + height;
+        }
+
+        //browser
+        var nVer = navigator.appVersion;
+        var nAgt = navigator.userAgent;
+        var browser = navigator.appName;
+        var version = '' + parseFloat(navigator.appVersion);
+        var majorVersion = parseInt(navigator.appVersion, 10);
+        var nameOffset, verOffset, ix;
+
+        // Opera
+        if ((verOffset = nAgt.indexOf('Opera')) != -1) {
+            browser = 'Opera';
+            version = nAgt.substring(verOffset + 6);
+            if ((verOffset = nAgt.indexOf('Version')) != -1) {
+                version = nAgt.substring(verOffset + 8);
+            }
+        }
+        // MSIE
+        else if ((verOffset = nAgt.indexOf('MSIE')) != -1) {
+            browser = 'Microsoft Internet Explorer';
+            version = nAgt.substring(verOffset + 5);
+        }
+        // Chrome
+        else if ((verOffset = nAgt.indexOf('Chrome')) != -1) {
+            browser = 'Chrome';
+            version = nAgt.substring(verOffset + 7);
+        }
+        // Safari
+        else if ((verOffset = nAgt.indexOf('Safari')) != -1) {
+            browser = 'Safari';
+            version = nAgt.substring(verOffset + 7);
+            if ((verOffset = nAgt.indexOf('Version')) != -1) {
+                version = nAgt.substring(verOffset + 8);
+            }
+        }
+        // Firefox
+        else if ((verOffset = nAgt.indexOf('Firefox')) != -1) {
+            browser = 'Firefox';
+            version = nAgt.substring(verOffset + 8);
+        }
+        // Other browsers
+        else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
+            browser = nAgt.substring(nameOffset, verOffset);
+            version = nAgt.substring(verOffset + 1);
+            if (browser.toLowerCase() == browser.toUpperCase()) {
+                browser = navigator.appName;
+            }
+        }
+        // trim the version string
+        if ((ix = version.indexOf(';')) != -1) version = version.substring(0, ix);
+        if ((ix = version.indexOf(' ')) != -1) version = version.substring(0, ix);
+
+        majorVersion = parseInt('' + version, 10);
+        if (isNaN(majorVersion)) {
+            version = '' + parseFloat(navigator.appVersion);
+            majorVersion = parseInt(navigator.appVersion, 10);
+        }
+        ////console.log("majorVersion"+majorVersion);
+
+        // mobile version
+        var mobile = /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(nVer);
+
+        // cookie
+        var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+
+        if (typeof navigator.cookieEnabled == 'undefined' && !cookieEnabled) {
+            document.cookie = 'testcookie';
+            cookieEnabled = (document.cookie.indexOf('testcookie') != -1) ? true : false;
+        }
+
+        // system
+        var os = unknown;
+        var clientStrings = [
+            {s:'Windows 3.11', r:/Win16/},
+            {s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/},
+            {s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/},
+            {s:'Windows 98', r:/(Windows 98|Win98)/},
+            {s:'Windows CE', r:/Windows CE/},
+            {s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/},
+            {s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/},
+            {s:'Windows Server 2003', r:/Windows NT 5.2/},
+            {s:'Windows Vista', r:/Windows NT 6.0/},
+            {s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/},
+            {s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/},
+            {s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/},
+            {s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/},
+            {s:'Windows ME', r:/Windows ME/},
+            {s:'Android', r:/Android/},
+            {s:'Open BSD', r:/OpenBSD/},
+            {s:'Sun OS', r:/SunOS/},
+            {s:'Linux', r:/(Linux|X11)/},
+            {s:'iOS', r:/(iPhone|iPad|iPod)/},
+            {s:'Mac OS X', r:/Mac OS X/},
+            {s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/},
+            {s:'QNX', r:/QNX/},
+            {s:'UNIX', r:/UNIX/},
+            {s:'BeOS', r:/BeOS/},
+            {s:'OS/2', r:/OS\/2/},
+            {s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
+        ];
+
+        try {
+            for (var id in clientStrings) {
+                var cs = clientStrings[id];
+                if (cs.r.test(nAgt)) {
+                    os = cs.s;
+                    break;
+                }
+            }
+
+            var osVersion = unknown;
+
+            if (/Windows/.test(os)) {
+                osVersion = /Windows (.*)/.exec(os)[1];
+                os = 'Windows';
+            }
+            switch (os) {
+                case 'Mac OS X':
+                    osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
+                    break;
+
+                case 'Android':
+                    osVersion = /Android ([\.\_\d]+)/.exec(nAgt)[1];
+                    break;
+
+                case 'iOS':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
+
+            }
+        } catch(ex) {
+            os = unknown;
+        }
+
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+        window.jscd = {
+            screen: screenSize,
+            screenWidth: width,
+            screenHeight: height,
+            browser: browser,
+            browserVersion: version,
+            browserMajorVersion: majorVersion,
+            mobile: mobile,
+            os: os,
+            osVersion: osVersion,
+            cookies: cookieEnabled,
+            isiPad: isiPad
+        };
+    } catch(ex) {};
+}(this));
+
+
+(function ($) {
+
+    function GetDeviceUID() {
+                var probtnId = "1234";
+                if(readCookie("probtnId") != null) {
+                } else {
+                    //set cookie
+                    var currentdate = new Date();
+                    currentdate = currentdate.getTime();
+                    probtnId = currentdate.toString()+"-"+navigator.userAgent.toString().hashCode();
+                    createCookie("probtnId", probtnId, 365);
+                };
+                probtnId = readCookie("probtnId");
+                return probtnId;
+    }
+
+        var XProBtnToken = "b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b";
+
+        String.prototype.hashCode = function(){
+            var hash = 0, i, char;
+            if (this.length == 0) return hash;
+            for (i = 0, l = this.length; i < l; i++) {
+                char  = this.charCodeAt(i);
+                hash  = ((hash<<5)-hash)+char;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        };
+
+        function createCookie(name, value, days) {
+            var expires = "";
+            if(days) {
+                var date = new Date();
+                date.setTime(date.getTime()+(days*24*60*60*1000));
+                expires = "; expires="+date.toGMTString();
+            }
+            document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1,c.length);
+                if(c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            createCookie(name, "", -1);
+        }
+
+    //load nessesary libraries and show button
+    $.fn.StartButton = function (options) {
+        ////console.log("window.jscd.browserMajorVersion - "+window.jscd.browserMajorVersion);
+        if ((window.jscd.browserMajorVersion>"8") || (window.jscd.browser!=="Microsoft Internet Explorer")) {
+        //if (true) {
+
+        //plugin version
+        var mainVersion = "1.0";
+
+        var params = $.extend({
+            TrackingLink: null,
+            MinimizeWrapperTime: 600,
+			OpenExternal: false,
+            CampaignID: null,
+			NeverClose: true,
+			MaxHeight: 0,
+			MaxWidth: 0,
+            type: "iframe",
+            domain: "",
+            fancyboxJsPath: "//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.js",
+            fancyboxCssPath: "//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css",
+            mainStyleCss: "//pizzabtn.herokuapp.com/stylesheets/probtn.css",
+            jqueryPepPath: "//cdn.jsdelivr.net/jquery.pep/0.6.3/jquery.pep.min.js",
+            buttonAnimationTimeAfterFancybox: 400,
+
+            HideAfterFirstShow: false,
+
+			LoadFancyboxCSS: true,
+
+            //base params
+            ContentURL: "http://app.ecwid.com/jsp/2557212/m", //site url address
+            BaseInsets: { // Базовое смещение от краев экрана с учетом статус бара
+                T: 4.0,
+                B: 4.0,
+                L: 4.0,
+                R: 4.0
+            },
+            ButtonEnabled: false, // Включена / выключена
+            ButtonVisible: false, // видна / не видна
+            // Кнопка
+            ButtonOpenInsets: { // Смещение в открытом состоянии
+                T: 32.0,
+                B: 32.0,
+                L: 32.0,
+                R: 32.0
+            },
+            ButtonPosition: { // Позиция
+                X: 0.5, // По умолчанию центр экрана
+                Y: 0.5, // По умолчанию центр экрана
+            },
+            ButtonSize: { // Размер
+                W: 64.0,
+                H: 64.0,
+            },
+            ButtonDragSize: { // Размер при перемещении
+                W: 68.0,
+                H: 68.0
+            },
+            ButtonOpenSize: { // Размер в открытом состоянии
+                W: 64.0,
+                H: 64.0
+            },
+            ButtonInactiveSize: { // Размер в неактивном состоянии
+                W: 64.0,
+                H: 64.0
+            },
+            ButtonOpacity: 0.8, // Прозрачность
+            ButtonDragOpacity: 1.0, // Прозрачность при перемещении
+            ButtonOpenOpacity: 1.0, // Прозрачность в открытом состоянии
+            ButtonInactiveOpacity: 0.5, // Прозрачность в неактивном состоянии
+            ButtonImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/gray.png",
+            ButtonDragImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",
+            ButtonOpenImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",
+            ButtonInactiveImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/drag_gray.png",
+
+            ClosePosition: { // Позиция
+                X: 0.5, // По умолчанию центр экрана
+                Y: 0.5 // По умолчанию центр экрана
+            },
+            CloseSize: { // Размер
+                W: 64,
+                H: 64,
+            },
+            CloseActiveSize: { // Размер в активном состоянии
+                W: 72,
+                H: 72,
+            },
+            CloseOpacity: 0.6, // Прозрачность
+            CloseActiveOpacity: 1.0, // Прозрачность в активном состоянии
+            CloseImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/close.png", // Ссылка на изображение
+            CloseActiveImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/close.png", // Ссылка на изображение в активном состоянии
+
+            HintInsets: { // Смещение от краев
+                T: 4.0,
+                B: 4.0,
+                L: 4.0,
+                R: 4.0,
+            },
+            HintLabelInsets: { // Смещение для текста
+                T: 4.0,
+                B: 4.0,
+                L: 4.0,
+                R: 4.0
+            },
+            HintImageInsets: { // Бордюры для изображения
+                T: 8.0,
+                B: 8.0,
+                L: 8.0,
+                R: 8.0
+            },
+            HintText: "Press me", // Текст
+            HintFont: { // Шрифт
+                Family: "Arial",
+                Size: 18
+            },
+            HintFontColor: { // Цвет
+                R: 1.0,
+                G: 1.0,
+                B: 1.0,
+                A: 1.0
+            },
+            VendorText: "",
+            VendorSite: "#",
+            VendorTextFont: {"Family":"Arial","Size":10},
+            VendorTextColor: {"R":1,"G":1,"B":1,"A":1},
+            VendorOpacity: 0.4,
+            VendorColor: {"R":0,"G":0,"B":0,"A":1},
+
+            HintOpacity: 0.8, // Прозрачность подсказки
+            HintImage: "//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.0/images/probtn/hint.png", // Ссылка на изображение
+
+            HintArrowSize: { // Размер стрелки
+                W: 8.0,
+                H: 8.0,
+            },
+            HintArrowOffset: { // Нахлест стрелки
+                T: 0.0,
+                B: 0.0,
+                L: 0.0,
+                R: 0.0,
+            },
+            HintArrowImageT: "", // Ссылка на изображение
+            HintArrowImageB: "", // Ссылка на изображение
+            HintArrowImageL: "", // Ссылка на изображение
+            HintArrowImageR: "", // Ссылка на изображение
+
+			ContentSize: {
+				X: "90%",
+				Y: "90%"
+			},
+			IsManualSize: false,
+
+            // Контент
+            ContentInsets: { // Смещение от краев
+                T: -2.0,
+                B: -2.0,
+                L: -2.0,
+                R: -2.0,
+            },
+            ContentWebViewInsets: { // Смещение для WebView
+                T: 12.0,
+                B: 12.0,
+                L: 12.0,
+                R: 12.0,
+            },
+            ContentImageInsets: { // Бордюры для изображения
+                T: 32.0,
+                B: 32.0,
+                L: 32.0,
+                R: 32.0,
+            },
+            ContentOpacity: 1.0, // Прозрачность
+            ContentBackOpacity: 1.0, // Прозрачность фоновой части контента
+            ContentBackColor: { // Цвет фоновой части контента
+                R: 0.0,
+                G: 0.0,
+                B: 0.0,
+                A: 1.0,
+            },
+            ContentActivityColor: { // Цвет индикатора загрузки
+                R: 0.0,
+                G: 0.0,
+                B: 0.0,
+                A: 1.0,
+            },
+            ContentImage: "", // Ссылка на изображение
+
+            ContentArrowSize: { // Размер стрелки
+                W: 14.0,
+                H: 14.0,
+            },
+            ContentArrowOffset: { // Нахлест стрелки
+                T: 8.0,
+                B: 8.0,
+                L: 9.0,
+                R: 9.0,
+            },
+            ContentArrowImageT: "", // Ссылка на изображение
+            ContentArrowImageB: "", // Ссылка на изображение
+            ContentArrowImageL: "", // Ссылка на изображение
+            ContentArrowImageR: "", // Ссылка на изображение
+
+            // Настройки анимации
+
+            DefaultDuration: 0.1, // Стандартная длительность анимации
+            DefaultDelay: 0.0, // Стандартная задежка анимации
+
+            OpenDuration: 0.2, // Длительность анимации "Открытия"
+            OpenDelay: 0.5, // Задержка анимации "Открытия"
+            CloseDuration: 0.2, // Длительность анимации "Закрытия"
+            CloseDelay: 0.5, // Задержка анимации "Закрытия"
+
+            ButtonShowDuration: 0.2, // Длительность анимации "Показать"
+            ButtonShowDelay: 0.0, // Задержка анимации "Показать"
+            ButtonHideDuration: 0.2, // Длительность анимации "Скрыть"
+            ButtonHideDelay: 0.0, // Задержка анимации "Скрыть"
+            ButtonDragDuration: 0.1, // Длительность анимации "Начать перемещать"
+            ButtonDragDelay: 0.0, // Задержка анимации "Начать перемещать"
+            ButtonUndragDuration: 0.2, // Длительность анимации "Перестать перемещать"
+            ButtonUndragDelay: 0.0, // Задержка анимации "Перестать перемещать"
+            ButtonInactiveDuration: 0.1, // Длительность анимации "Переход в неактивное состояние"
+            ButtonInactiveDelay: 5.0, // Время простоя перед переходом в неактивное состояние
+            ButtonInertiaSpeed: 512.0, // Скорость анимации "Инерция"
+            ButtonInertiaSpeedMin: 32.0, // Максимальная скорость анимации "Инерция"
+            ButtonInertiaSpeedMax: 1024.0, // Минимальная скорость анимации "Инерция"
+            ButtonInertiaFactor: 6.0, // Множитель анимации "Инерция"
+
+            CloseShowDuration: 0.1, // Длительность анимации "Показать область закрытия"
+            CloseShowDelay: 0.0, // Задержка анимации "Показать область закрытия"
+            CloseHideDuration: 0.2, // Длительность анимации "Скрыть область закрытия"
+            CloseHideDelay: 0.0, // Задержка анимации "Скрыть область закрытия"
+            CloseActiveDuration: 0.1, // Длительность анимации "Активировать область закрытия"
+            CloseActiveDelay: 0.0, // Задержка анимации "Активировать область закрытия"
+            CloseUnactiveDuration: 0.1, // Длительность анимации "Деактивировать область закрытия"
+            CloseUnactiveDelay: 0.0, // Задержка анимации "Деактивировать область закрытия"
+
+            HintLaunchDuration: 30000.0, // Длительность анимации "Показать при запуске подсказку"
+            HintLaunchDelay: 0.0, // Задержка анимации "Показать при запуске подсказку"
+            HintShowDuration: 0.1, // Длительность анимации "Показать подсказку"
+            HintShowDelay: 0.0, // Задержка анимации "Показать подсказку"
+            HintHideDuration: 0.2, // Длительность анимации "Скрыть подсказку"
+            HintHideDelay: 0.0, // Задержка анимации "Скрыть подсказку"
+
+            ContentShowDuration: 0.1, // Длительность анимации "Показать контент"
+            ContentShowDelay: 0.0, // Задержка анимации "Показать контент"
+            ContentHideDuration: 0.2, // Длительность анимации "Скрыть контент"
+            ContentHideDelay: 0.0, // Задержка анимации "Скрыть контент",
+
+            HideInFrame: true, // Скрывать, если кнопка показывается внутри другой кнопки
+
+            ZCustomCss: ""
+        }, options);
+
+
+        // hint style
+        var hintTextStyle = {
+            "opacity": params.HintOpacity,
+            "font-size": params.HintFont.Size,
+            "font-family": params.HintFont.Family,
+            "color": "white",
+            "padding": "4px",
+            "background": "url('"+params.HintImage+"')",
+        };
+
+		if ((params.HintText=="") || (params.HintText==null)) {
+			//alert("none");
+			hintTextStyle.display = "none";
+			hintTextStyle.opacity = "0.0";
+		}
+
+        var closeButton = initCloseButton();
+
+        function changeBodySize() {
+            var opts = {
+                width: window.availWidth,
+                height: window.availHeight
+            }
+            if(window.jscd.browser === "Microsoft Internet Explorer") {
+                opts.overflow = "auto"
+            }
+            $('body').css(opts);
+
+        }
+
+        // landscape
+        function isLandscape() {
+            return ($(window).width() > $(window).height());
+        }
+
+        $(document).ready(function () {
+            var currentDomain = document.domain.replace("www.","");
+            if(currentDomain == "" || currentDomain == null) {
+                currentDomain = "example.com";
+            };
+
+            var realDomain = currentDomain;
+            //rewrite domain if it specified in plugins params
+            if ((params.domain!="") && (params.domain!=null)) {
+                currentDomain = params.domain;
+            } else {
+            };
+
+            // orientation
+            var supportsOrientationChange = "onorientationchange" in window;
+            var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+            var windowHeight = window.innerHeight;
+            var windowWidth = window.innerWidth;
+
+
+            var closeAfterOrientationChange = false;
+            //when window is resized or changed orientation on device
+            function onOrientationChange(e) {
+                ////console.log("orientationChange");
+                /*MaximizeWrapper(function() {
+                    pizzabtn.css('left', '5px');
+                    pizzabtn.css('top', '5px');
+                    MinimizeWrapper(function(){
+                    }, params.MinimizeWrapperTime);                    
+                });*/
+
+                if($.fancybox.isOpen) {
+                    closeAfterOrientationChange = true;
+                    $.fancybox.close();
+                };
+            }
+
+            $(window).bind(orientationEvent, onOrientationChange);
+
+			var operator = null;
+			var settingsUrl = "";
+
+			$.get("http://ip-api.com/json", function(response) {
+
+				//если МТС, то "MobileOperator": "MTS RUS"
+				//если Билайн, то "MobileOperator": "Beeline"
+				var org = response.as.toLowerCase();
+				if (org.indexOf("mts") > -1) {
+					operator = "MTS RUS";
+				}
+				if (org.indexOf("beeline") > -1) {
+					operator = "Beeline";
+				}
+				if (org.indexOf("vimpel") > -1) {
+					operator = "Beeline";
+				}
+
+				//operator = "MTS RUS";
+
+			if (operator===null) {
+				settingsUrl = "https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&callback=?";
+			} else {
+				settingsUrl = "https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&MobileOperator="+operator+"&callback=?";
+			}
+            $.getJSON(settingsUrl,
+                function(data) {
+                    try {
+
+                        try {                            
+                            //var HintText = utf8_encode(data.result.HintText);
+                            data.result.HintText = HintText;                            
+                        } catch(ex) {
+                            //////console.log(ex.toString());
+                        }
+                        $.extend(params, data.result, options);
+
+						if (params.LoadFancyboxCSS===true) {
+							$('head').append('<link rel="stylesheet" href="'+params.fancyboxCssPath+'" type="text/css" />');
+						}
+
+                        //add custom css to head
+                        if ((params.ZCustomCss!=="") && (params.ZCustomCss!==null) && (params.ZCustomCss!==undefined)) {
+                            $('head').append('<style type="text/css">'+params.ZCustomCss+'</style>');
+                        }
+
+                        hintTextStyle = {
+                            "opacity": params.HintOpacity,
+                            "font-size": params.HintFont.Size,
+                            "font-family": params.HintFont.Family,
+                            "color": "rgb("+ params.HintFontColor.R*100 +"%, "+params.HintFontColor.G*100+"%, "+params.HintFontColor.B*100+"%)",
+                            "padding-left": params.HintLabelInsets.L,
+                            "padding-top": params.HintLabelInsets.T,
+                            "padding-right": params.HintLabelInsets.R,
+                            "padding-bottom": params.HintLabelInsets.B,
+                            "background": "url('"+params.HintImage+"')"
+                        };
+						if ((params.HintText=="") || (params.HintText==null)) {
+							hintTextStyle.display = "none";
+							hintTextStyle.opacity = "0.0";
+						}
+                    } catch(ex) {
+                    };
+                }).done(function(){}).fail(function(ex){
+					////console.log("Fail:");
+					console.dir(ex);
+				}).always(CheckInFrame);
+			}, "jsonp");
+
+
+            function CheckInFrame() {
+                if (params.HideInFrame === true && window.self !== window.top)
+                {
+                    //////console.log("in frame");                    
+                }
+                else
+                {
+                    BeginButtonProcess();
+                }
+            };
+            // XXX BEGIN BUTTON PROCESS
+
+            function BeginButtonProcess() {
+                $('head').append('<link rel="stylesheet" href="'+params.mainStyleCss+'" type="text/css" />');
+
+				////console.log("window.jscd");
+				////console.log(window.jscd);
+
+                if (window.jscd.os==="iOS") {
+                    $("body").addClass("btn_os_ios");
+                    if (window.jscd.isiPad === true) {
+                        $("body").addClass("btn_device_ipad");
+                    } else {
+                        $("body").addClass("btn_device_iphone");
+                    }
+                }
+
+				if ((window.jscd.mobile)) {	
+					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: scroll !important;  } </style>");
+				} else {
+					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hide !important; } </style>");
+				};
+
+				//var closeButton = initCloseButton();
+				$('#closeButton').attr('src', params.CloseImage);
+
+                // append pizzabtn and close btn styles
+				if (params.NeverClose==false) {
+					$('head').append(
+						$('<style/>', {
+							id: 'probtn_style',
+							type: "text/css",
+							html: [
+								'#pizzabtn.pizzabtn_normal { display: block; clear: both; position: device-fixed !important; }',
+								'.close_pro_button_normal{ width:'+params.CloseSize.W+'px; height:'+params.CloseSize.H+'px; opacity:'+params.CloseOpacity+'; display: block; clear: both; }',
+							].join("\n")
+						})
+					);
+				};
+
+                // get or create pizzabtn
+                var pizzabtn = initPizzaButton();
+
+                // load fancybox and jquery.pep
+                if(typeof $.fancybox == 'function') {
+                     loadPep();
+                } else {
+                    $.getScript(params.fancyboxJsPath, loadPep); //fancybox end
+                }
+
+                function loadPep() {
+                    try {
+                        if(typeof $.pep.toggleAll == 'function') {
+                             AllLoadedButtonProcess();
+                        } else {
+                            $.getScript(params.jqueryPepPath, AllLoadedButtonProcess);
+                        };
+                    } catch(ex) {
+                        $.getScript(params.jqueryPepPath, AllLoadedButtonProcess);
+                    };
+                }
+
+                ///
+                function AllLoadedButtonProcess() {
+                    SendStatisticsData();					
+                    
+                    SendBrowserStatsInfo();
+
+                    /*//console.log($.fancybox.resize);
+                    $.fancybox.resize = function() {
+                        var overlay = jQuery(".fancybox-overlay").first();
+                        if (overlay.is(':visible')) {
+                            overlay.css('height', $(document).height());
+                        }
+
+                        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                        var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                        //console.log("w - "+w);
+                        //console.log("h - "+h);
+                        var updated_width = w;
+                        //if (updated_width > selectedOpts.width) { updated_width = selectedOpts.width; }
+
+                        $("#fancybox-wrap, #fancybox-content").css("width", updated_width);  
+                        
+                        var updated_height = h;
+                        //if (updated_height > selectedOpts.height) { updated_height = selectedOpts.height; }
+
+                        $("#fancybox-wrap, #fancybox-content").css("width", updated_height);      
+
+                        //$.fancybox.center(true);
+                    };*/
+
+                    // show button
+                    if(params.ButtonEnabled && params.ButtonVisible) {
+                        pizzabtn.show();
+                    }
+					
+					if (params.ButtonVisible) {
+						SendStatisticsData("Showed", 1);
+					} else {
+						//SendStatisticsData("Showed", 1);
+					}
+
+                    //hide hint after params.HintLaunchDuration time (in seconds)
+                    pizzabtn.hideHintDelay();
+
+                    //show hint with nessesary animation
+                    pizzabtn.showHint();
+
+
+                    // help vars
+                    var overlaped = false;
+
+                    pizzabtn.moved = false;
+                    pizzabtn.pep({
+                        // hardwareAccelerate: false,
+                        useCSSTranslation: false,
+                        constrainTo: 'parent',
+                        // cssEaseString: 'cubic-bezier(0.225, 0.500, 0.580, 1.000)', //default
+                        // cssEaseString: 'cubic-bezier(0, 1, 1, 1)', // fast
+                        // cssEaseString: 'cubic-bezier(0, 0, 1, 1)', // linear
+                        // cssEaseString: 'cubic-bezier(.42, 0, .58, 1)', // ease-in-out
+                        // cssEaseString: 'cubic-bezier(0, 0, .58, 1)', // ease-out
+                        cssEaseString: 'cubic-bezier(0, .50, .50, 1)',
+                        cssEaseDuration: 600,
+                        velocityMultiplier: 1.0,
+                        startThreshold: [1, 1],
+                        droppable: '#closeButton',
+                        initiate: changeBodySize,
+                        start: function() {
+                            MaximizeWrapper(function() {
+                                if(pizzabtn.moved == false) {
+                                    pizzabtn.dragAnimate();
+                                };
+                                pizzabtn.moved = true;
+                                //hide hint
+                                if(pizzabtn.hintTextActive) {
+                                    pizzabtn.hideHint();
+                                }
+                                // show close button
+								if (params.NeverClose==false) {
+									closeButton.show();
+								};
+                                SendStatisticsData("Moved", 1);
+
+                                MinimizeWrapper(function(){}, params.MinimizeWrapperTime);
+                            });
+                        },
+                        drag: function() {
+                            MaximizeWrapper(function() {
+
+                            var pizzabtnRect = pizzabtn[0].getBoundingClientRect();
+                            var closeButtonRect = closeButton[0].getBoundingClientRect();
+
+                            if ((pizzabtnRect.top + pizzabtnRect.height) > $(window).height()) {
+                            }
+
+                            var overlap = !(pizzabtnRect.right < closeButtonRect.left || pizzabtnRect.left > closeButtonRect.right || pizzabtnRect.bottom < closeButtonRect.top || pizzabtnRect.top > closeButtonRect.bottom);
+                            if(overlap && closeButtonRect.width !== 0) {
+                                if(!overlaped) {
+                                    closeButton.overlayActive();
+                                    overlaped = true;
+                                }
+                            } else {
+                                if(overlaped) {
+                                    closeButton.overlayUnactive();
+                                    overlaped = false;
+                                }
+                            }
+                            });
+                        },
+                        stop: function() {
+                            //MinimizeWrapper();
+
+                            if(!pizzabtn.moved) {
+                                MaximizeWrapper(function() {
+                                    onButtonTap();
+                                });
+                            } else {
+                                MinimizeWrapper(function() {}, params.MinimizeWrapperTime);
+
+                                if(overlaped) {
+                                    SendStatisticsData("Closed", 1);
+                                    SendStatisticsData("Hidded", 1);
+                                    pizzabtn.hide();
+                                } else {
+                                    pizzabtn.undragAnimate();
+                                };
+                            }
+                            closeButton.hide();
+                            pizzabtn.moved = false;
+                            overlaped = false;
+                        }
+                    });
+
+                    function onButtonTap() {
+                        //console.log("button tap");
+                        //alert("button tap");
+                        //MaximizeWrapper(function() {
+
+                        var isMobileLandscape = (isLandscape() && window.jscd.mobile),
+                            position          = pizzabtn.position(),
+                            buttonTop         = position.top,
+                            buttonLeft        = position.left,
+                            winWidth          = window.innerWidth,
+                            winHeight         = window.innerHeight,
+                            finishTop         = '0px',
+                            finishLeft        = '0px',
+                            widthCenter       = (winWidth + params.ButtonSize.W) / 2,
+                            heightCenter      = (winHeight + params.ButtonSize.H) / 2;
+
+                        // top or bottom
+                        if(heightCenter <= buttonTop) {
+                            finishTop = (winHeight - params.ButtonSize.H) + 'px';
+                        }
+                        // left or right
+                        if(widthCenter <= buttonLeft) {
+                            finishLeft = (winWidth - params.ButtonSize.W) + 'px';
+                        }
+
+                        if ((params.ContentInsets.T < 0) || (params.ContentInsets.B < 0) || (params.ContentInsets.L < 0) || (params.ContentInsets.R < 0)) {
+                            var margins = (isMobileLandscape)
+                                ? [params.ButtonSize.H/4, params.ButtonSize.H/4 +5, params.ButtonSize.H/4, params.ButtonSize.H/4 +5]
+                                : [params.ButtonSize.H+5, params.ButtonSize.H/2, params.ButtonSize.H+5, params.ButtonSize.H/2];
+
+                            if ((window.jscd.mobile) && (params.ButtonSize.H > 70))
+                            {
+                                margins = [params.ButtonSize.H/8, params.ButtonSize.H/8, params.ButtonSize.H/8, params.ButtonSize.H/8];
+                            } else {
+							    if (params.ButtonSize.H > 70) {
+								    margins = [70, 70, 70, 70];
+							    };
+						    };
+                        } else {
+                            var margins = [params.ContentInsets.T, params.ContentInsets.R, params.ContentInsets.B, params.ContentInsets.L];
+                        }
+
+                        var positionObj = {
+                            property: (isMobileLandscape) ? "left" : "top",
+                            currentValue: (isMobileLandscape) ? buttonLeft : buttonTop,
+                            finishValue: (isMobileLandscape) ? finishLeft : finishTop
+                        }
+
+                        var InitLeft = $("#pizzabtn").offset().left;
+                        var InitTop = $("#pizzabtn").offset().top;
+
+                        // send content showed stat
+                        SendStatisticsData("ContentShowed", 1);
+
+                        $.pep.toggleAll(false);
+
+						var fancyboxParams = {
+                            href: params.ContentURL,
+                            sandbox: "allow-same-origin allow-scripts allow-popups allow-forms",
+                            type: 'iframe',
+
+                            autoCenter: true,
+                            titlePosition: 'inside',
+                            scrolling: 'no',
+                            margin: margins,
+                            //autoResize: true,
+                            //autoScale: true,
+                            padding: "0px",
+                            height: "100%",
+                            minWidth: 100,
+                            minHeight: 100,
+							//autoscale: true,
+                            iframe: {
+                                sandbox: "allow-same-origin allow-scripts allow-popups allow-forms",
+                                preload: false,
+                                scrolling: "yes"
+                            },
+                            helpers: {
+                                overlay: {
+                                  locked: false
+                                },
+                                title : { type : 'inside' }
+                            },
+                            beforeLoad: function() {
+
+                                $("#hintText").hide();
+
+                                $(".fancybox-iframe").first().attr("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
+
+
+                                pizzabtn.css(positionObj.property, positionObj.finishValue);
+                                if (positionObj.property=='top') {
+                                    pizzabtn.css('left', InitLeft+'px');
+                                } else {
+                                    pizzabtn.css('top', InitTop+'px');
+                                }
+
+                                if(window.jscd.os === "iOS") {
+                                    $(document.body).bind("touchmove", function(e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.returnValue = false; // ie
+                                    });
+                                }
+                                $('html').css("overflow", "hidden");
+                            },
+                            afterShow: function() {
+                                $(".fancybox-iframe").first().attr("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
+                                $(".fancybox-iframe").first().contents().find("html").css("visibility", "visible !important");
+
+                                pizzabtn.bind("click", $.fancybox.close);
+                            },
+                            afterClose: function () {
+                                MinimizeWrapper(function(){                                    
+                                }, params.MinimizeWrapperTime);
+                                if(window.jscd.os === "iOS") {
+                                    $(document.body).unbind('touchmove');
+                                }
+                                $('html').css("overflow", "auto");
+                                pizzabtn.unbind('click');
+                                $.pep.toggleAll(true);
+                                if(closeAfterOrientationChange) {
+                                    pizzabtn.center();
+                                    closeAfterOrientationChange = false;
+                                } else {
+                                    pizzabtn.css(positionObj.property, positionObj.currentValue + 'px');
+                                }
+
+                                if(params.HideAfterFirstShow == true) {
+                                    SendStatisticsData("Closed", 1);
+                                    SendStatisticsData("Hidded", 1);
+                                    pizzabtn.hide();
+                                };
+                            }
+                        };
+
+                        function formatTitle() {
+                            return '<div id="button_fancybox_title">'+ params.VendorText +'</div>';
+                        }
+
+                        if ((params.VendorText!=="") && (params.ButtonEnabled===true) && (params.ButtonVisible===true)) {
+                            try {
+                            fancyboxParams.titleShow = true;
+                            fancyboxParams.title = "<style>.fancybox-title-inside-wrap {color: rgba("+params.VendorColor.R+","+params.VendorColor.G+","+params.VendorColor.B+","+params.VendorColor.A+"); text-align: center; } </style><a style='font-family: "+params.VendorTextFont.Family+"; font-size: "+params.VendorTextFont.Size+"px; color: rgba("+params.VendorTextColor.R+","+params.VendorTextColor.G+","+params.VendorTextColor.B+","+params.VendorTextColor.A+")' href='"+params.VendorSite +"' target='_blank'>"+params.VendorText+"</a>";
+                            /*fancyboxParams.titleFormat = function () {
+                                return '<div id="button_fancybox_title">'+ params.VendorText +'</div>';
+                            };*/
+                            } catch(ex) { }
+                        }
+
+						//params.IsManualSize  =true;
+						//params.ContentSize.X = "10%";
+						if (params.IsManualSize===true) {
+							fancyboxParams.width = params.ContentSize.X;
+							fancyboxParams.height = params.ContentSize.Y;
+							//fancyboxParams.autoScale = false;
+						} else {
+						}
+						if (params.MaxWidth>0) {
+							fancyboxParams.maxWidth = params.MaxWidth;
+						};
+						if (params.MaxHeight>0) {
+							fancyboxParams.maxHeight = params.MaxHeight;
+						};
+
+						////console.log("params.OpenExternal - "+params.OpenExternal);
+						if (params.OpenExternal===true) {
+							MinimizeWrapper(function() {
+                                pizzabtn.css(positionObj.property, positionObj.finishValue);
+                                if (positionObj.property=='top') {
+                                    pizzabtn.css('left', InitLeft+'px');
+                                } else {
+                                    pizzabtn.css('top', InitTop+'px');
+                                }
+
+                                if(window.jscd.os === "iOS") {
+                                    $(document.body).bind("touchmove", function(e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.returnValue = false; // ie
+                                    });
+                                }
+
+								if(window.jscd.os === "iOS") {
+                                    $(document.body).unbind('touchmove');
+                                }
+                                $('html').css("overflow", "auto");
+                                pizzabtn.unbind('click');
+                                $.pep.toggleAll(true);
+
+								window.open(params.ContentURL, '_blank');
+							}, params.MinimizeWrapperTime);
+						} else {
+							$.fancybox.open(fancyboxParams);
+						};
+
+                    //});
+                    }
+                }
+            };
+
+            // XXX STATISTICS
+
+            function SendStat(name, value, probtnId, currentDomain) {
+                $.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateUserStatistic?BundleID="+currentDomain+"&Version=1.0&DeviceType=web&CampaignID="+params.CampaignID+"&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
+                function(){}).done(function(){}).fail(function(){}).always(function(){});
+            }
+
+            ///
+            /// Send stats to probtn
+            /// <values>
+            /// paramName - name for statistics parameter
+            /// value - value of this paarameter. Default is 1
+            /// custom - if set to 1, this param and it's value will be send as custom stats
+            /// </values>
+            ///
+            function SendStatisticsData(paramName, value, custom) {
+                var probtnId = "1234";
+
+                if(paramName == "" || paramName == null) {
+                    paramName = "Opened";
+                };
+                if(value == "" || value == null) {
+                    value = 1;
+                };
+                /*if(probtnId != "" || probtnId != null) {
+                    probtnId = "1234";
+                };*/
+                probtnId = GetDeviceUID();
+
+                if(custom == "" || custom == null) {
+                    SendStat(paramName, value, probtnId, currentDomain);
+                } else {
+                    SendCustomStat(paramName, value, probtnId, currentDomain);
+                };
+            }
+
+            ///
+            /// Function used to send "custom" statistics
+            /// for example information about resolution, OS, browser, browser version
+            /// This information would be rewriten by last resived data for deviceUID each time when it send to server
+            ///
+            function SendCustomStat(name, value, probtnId, currentDomain) {
+                $.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateCustomStatistic?BundleID="+currentDomain+"&DeviceType=web&CampaignID="+params.CampaignID+"&Version=1.0&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
+                function(){}).done(function(){}).fail(function(){}).always(function(){});
+            }
+
+            ///
+            /// send information about browser version, resolution and some other data
+            ///
+            function SendBrowserStatsInfo() {
+                try {
+                    SendStatisticsData("Resolution", jscd.screen, 1);
+                    SendStatisticsData("Browser", jscd.browser, 1);
+                    SendStatisticsData("BrowserVersion", jscd.browserVersion, 1);
+                    SendStatisticsData("OS", jscd.os +' '+ jscd.osVersion, 1);
+                } catch(ex) {}
+            }
+        });
+    } else {
+        //console.log("IE8 not supported.");
+    }
+
+            // XXX CONSTRUCTORS
+
+        // close button constructor
+        function initCloseButton() {
+            var btn = $('<img/>', {
+                id: 'closeButton',
+                'src': params.CloseImage,
+                'class': 'close_pro_button_normal',
+                css: {
+                    position: 'fixed',
+                    display: 'none'
+                }
+            }).prependTo('body');
+
+            btn.active = false;
+            btn.rect = {};
+
+            btn.css({
+                '-webkit-transform': 'translateZ(0)',
+                '-moz-transform': 'translateZ(0)',
+                '-ms-transform': 'translateZ(0)',
+                '-o-transform': 'translateZ(0)',
+                'transform': 'translateZ(0)',
+
+                '-webkit-backface-visibility': 'hidden',
+                '-moz-backface-visibility': 'hidden',
+                '-ms-backface-visibility': 'hidden',
+                'backface-visibility': 'hidden',
+
+                '-webkit-perspective': 1000,
+                '-moz-perspective': 1000,
+                '-ms-perspective': 1000,
+                'perspective': 1000,
+
+                'transition-property': 'opacity, width, height, left, top',
+                'timing-function': 'linear',
+
+                '-webkit-transition-property': 'opacity, width, height, left, top',
+                '-webkit-timing-function': 'linear',
+
+                '-moz-transition-property': 'opacity, width, height, left, top',
+                '-moz-timing-function': 'linear',
+
+                '-o-transition-property': 'opacity, width, height, left, top',
+                '-o-timing-function': 'linear',
+            });
+
+            btn.center = function() {
+                var body = $('body');
+				var closex = params.ClosePosition.X;
+				var closey = params.ClosePosition.Y;
+                this.css('top', ($(window).height() - this.height())*closey + 'px'); //(body.innerHeight() - this.height())*closey + $(window).scrollTop() + 'px');
+                this.css('left', (body.innerWidth() - this.width())*closex + $(window).scrollLeft() + 'px');
+            }
+
+            btn.show = function() {
+                var me = this;
+                me.center();
+                setTimeout(function() {
+                    me.stop(true, true).fadeIn(params.CloseShowDuration * 1000);
+                }, params.CloseShowDelay * 1000);
+            }
+
+            btn.hide = function() {
+                var me = this;
+                setTimeout(function() {
+                    me.stop(true, true).fadeOut(params.CloseHideDuration * 1000);
+                }, params.CloseHideDelay * 1000);
+            }
+
+            btn.setTransitionDuration = function(duration) {
+                var val = duration + 's';
+                this.css({
+                    'transition-duration': val,
+                    '-webkit-transition-duration': val,
+                    '-moz-transition-duration': val,
+                    '-o-transition-duration': val,
+                });
+            }
+
+            // Animation when close button become active - change size and opacity
+            btn.overlayActive = function() {
+                var me = this;
+                var position = me.position();
+                me.setTransitionDuration(params.CloseActiveDuration);
+                setTimeout(function() {
+                    me.css({
+                        opacity: params.CloseActiveOpacity,
+                        width: params.CloseActiveSize.W,
+                        height: params.CloseActiveSize.H,
+                        left: position.left - ((params.CloseActiveSize.W - params.CloseSize.W)/2),
+                        top: position.top - ((params.CloseActiveSize.H - params.CloseSize.H)/2),
+                    });
+                }, params.CloseActiveDelay * 1000);
+            }
+
+            // Animation when button become inactive - restore close button size and opacity
+            btn.overlayUnactive = function() {
+                var me = this;
+                var body = $('body');
+				var closex = params.ClosePosition.X;
+				var closey = params.ClosePosition.Y;
+                var top = ($(window).height() - this.height())*closey + 'px';
+                //(body.innerHeight() - closeButton.height())*closey + $(window).scrollTop(); 
+                ///+$(window).scrollTop()
+                var left = (body.innerWidth() - closeButton.width())*closex + $(window).scrollLeft(); ///+$(window).scrollLeft()
+
+                me.setTransitionDuration(params.CloseUnactiveDuration);
+                setTimeout(function() {
+                    var options = {
+                        opacity: params.CloseOpacity,
+                        width: params.CloseSize.W,
+                        height: params.CloseSize.H,
+                        left: left,
+                        top: top,
+                    };
+
+                    me.css(options);
+                }, params.CloseUnactiveDelay * 1000);
+            };
+
+            btn.setTransitionDuration(params.CloseActiveDuration);
+
+            btn.center();
+
+            return btn;
+        }
+
+        function MinimizeWrapper(callback1, time) {
+            //console.log("MinimizeWrapper");
+            var callback = callback1;
+            function minimize() {
+                    var pizzabtn_wrapper = $("#pizzabtn_wrapper");
+                    var opts = {
+                                width: "auto",
+                                height: "auto",
+                                position: "fixed"
+                    };
+
+                    if ((params.TrackingLink!==null) && (params.TrackingLink!==null) && (params.TrackingLink!=="")) {
+                        opts['background'] = 'url('+params.TrackingLink+') no-repeat';
+                        //console.log(opts);
+                    }
+
+                    try {
+                        $.pep.toggleAll(false);
+                        pizzabtn_wrapper.css(opts);
+                        $.pep.toggleAll(true);
+                    } catch(ex) { 
+                        //console.log(ex);
+                        pizzabtn_wrapper.css(opts);
+                    }
+
+                if ((callback!==null) && (callback!==undefined)) {
+                    callback();
+                }
+            }
+              
+            if (time!==null) {
+                setTimeout(minimize, time)
+            } else {
+                minimize();                
+            }            
+        }
+
+        ///
+        ///
+        ///
+        function MaximizeWrapper(callback) {
+            //console.log("MaximizeWrapper");
+            var pizzabtn_wrapper = $("#pizzabtn_wrapper");
+            var opts = {
+                width: $(window).width(),
+                height: $(window).height(),
+                position: "fixed"
+            };
+
+            if ((params.TrackingLink!==null) && (params.TrackingLink!==null) && (params.TrackingLink!=="")) {
+                opts['background'] = 'url('+params.TrackingLink+') no-repeat';
+                //console.log(opts);
+            }
+
+            pizzabtn_wrapper.css(opts);
+
+            try {
+                if (($("#pizzabtn").offset().left - $(window).scrollLeft())  > pizzabtn_wrapper.width()) {
+                    ////console.log("change button left");
+                    var newleft = pizzabtn_wrapper.width() - $("#pizzabtn").width();
+                    $("#pizzabtn").css({ left: newleft+'px' });
+                };
+            } catch(ex) {};
+            try {
+                if (($("#pizzabtn").offset().top - $(window).scrollTop()) > pizzabtn_wrapper.height()) {
+                    ////console.log("change button top");
+                    var newtop = pizzabtn_wrapper.height() - $("#pizzabtn").height();
+                    $("#pizzabtn").css({ top: newtop+'px' });
+                };
+            } catch(ex) {};
+
+            try {
+                callback();
+            }catch(ex) {};
+        }
+
+        // pizza button constructor
+        function initPizzaButton() {
+            var pizzabtn_wrapper = $("<div/>", {
+                    id: "pizzabtn_wrapper"
+                }).prependTo('body');            
+
+            $("body").on('click', "#pizzabtn_wrapper", function() {
+               //console.log("pizzabtn_wrapper clicked");
+               MinimizeWrapper(function() {}, params.MinimizeWrapperTime); 
+            });
+
+            var opts = {
+                //width: $(window).width(),
+                //height: $(window).height(),
+                width: "auto",
+                height: "auto",
+                position: "fixed"
+            };
+
+            //console.log(params.TrackingLink);
+            //console.log(params.TrackingLink);
+            if ((params.TrackingLink!==null) && (params.TrackingLink!==null) && (params.TrackingLink!=="")) {
+                opts['background'] = 'url('+params.TrackingLink+') no-repeat';
+                //console.log(opts);
+            }
+
+            //console.dir(opts);
+            pizzabtn_wrapper.css(opts);
+			
+			/*if ((window.jscd.mobile)) {				
+			} else {
+				//.fancybox-inner
+				$("<style>")
+					.prop("type", "text/css")
+					.html(".fancybox-inner { overflow: hide !important; }")
+					.appendTo("head");
+				//hide second scroll
+			}*/
+
+            var btn = $("#pizzabtn");
+            if(btn.length === 0) {
+                btn = $("<div/>", {
+                    id: "pizzabtn"
+                }).prependTo(pizzabtn_wrapper);
+            };
+            btn.addClass("pizzabtn_normal");
+            btn.css({
+                'display': 'none',
+
+                '-webkit-transform': 'translateZ(0)',
+                '-moz-transform': 'translateZ(0)',
+                '-ms-transform': 'translateZ(0)',
+                '-o-transform': 'translateZ(0)',
+                'transform': 'translateZ(0)',
+
+                '-webkit-backface-visibility': 'hidden',
+                '-moz-backface-visibility': 'hidden',
+                '-ms-backface-visibility': 'hidden',
+                'backface-visibility': 'hidden',
+
+                '-webkit-perspective': 1000,
+                '-moz-perspective': 1000,
+                '-ms-perspective': 1000,
+                'perspective': 1000,
+
+                '-webkit-transition': 'top, left '+params.buttonAnimationTimeAfterFancybox+'ms linear',
+                '-moz-transition': 'top, left '+params.buttonAnimationTimeAfterFancybox+'ms linear',
+                '-ms-transition': 'top, left '+params.buttonAnimationTimeAfterFancybox+'ms linear',
+                '-o-transition': 'top, left '+params.buttonAnimationTimeAfterFancybox+'ms linear',
+                'transition': 'top, left '+params.buttonAnimationTimeAfterFancybox+'ms linear',
+				'width': params.ButtonSize.W,
+                'height': params.ButtonSize.H
+            });
+
+            // add image
+            var pizzabtnImg = $("<img/>", {
+                id: "pizzabtnImg",
+                src: params.ButtonImage,
+                css: {
+                    'width': params.ButtonSize.W,
+                    'height': params.ButtonSize.H,
+                    'opacity': params.ButtonOpacity,
+
+                    'transition-property': 'opacity, width, height',
+                    'timing-function': 'linear',
+
+                    '-webkit-transition-property': 'opacity, width, height',
+                    '-webkit-timing-function': 'linear',
+
+                    '-moz-transition-property': 'opacity, width, height',
+                    '-moz-timing-function': 'linear',
+
+                    '-o-transition-property': 'opacity, width, height',
+                    '-o-timing-function': 'linear',
+                }
+            }).appendTo(pizzabtn);
+
+            // add hint text
+            var hintText = $("<span/>", {
+                id: "hintText",
+                css: {
+                    opacity: 0,
+
+                    'transition-property': 'opacity',
+                    'timing-function': 'linear',
+
+                    '-webkit-transition-property': 'opacity',
+                    '-webkit-timing-function': 'linear',
+
+                    '-moz-transition-property': 'opacity',
+                    '-moz-timing-function': 'linear',
+
+                    '-o-transition-property': 'opacity',
+                    '-o-timing-function': 'linear',
+
+                    'transition-duration': params.HintShowDuration + 's',
+                    '-webkit-transition-duration': params.HintShowDuration + 's',
+                    '-moz-transition-duration': params.HintShowDuration + 's',
+                    '-o-transition-duration': params.HintShowDuration + 's',
+                },
+                html: params.HintText.replace(/ /g,"&nbsp;")
+            }).appendTo(pizzabtn);
+            pizzabtn.hintTextActive = false;
+
+
+
+            MinimizeWrapper(function() {}, params.MinimizeWrapperTime);
+
+            hintText.makeInvisible = function() {
+                this.css({
+                    'transition-duration': params.HintHideDuration + 's',
+                    '-webkit-transition-duration': params.HintHideDuration + 's',
+                    '-moz-transition-duration': params.HintHideDuration + 's',
+                    '-o-transition-duration': params.HintHideDuration + 's',
+                });
+                this.css('opacity', 0);
+            }
+
+            btn.center = function() {
+                var body = $('#pizzabtn_wrapper');
+                this.css('top', (body.innerHeight() - this.height())/2 + $(window).scrollTop() + 'px');
+                this.css('left', (body.innerWidth() - this.width())/2 + $(window).scrollLeft() + 'px');
+            }
+
+            btn.show = function() {
+                var me = this;
+                setTimeout(function() {
+                    me.stop(true, true).fadeIn(params.ButtonShowDuration * 1000);
+                }, params.ButtonShowDelay * 1000);
+            }
+
+            btn.hide = function() {
+                var me = jQuery("#pizzabtn");
+                setTimeout(function() {
+                    me.stop(true, true).fadeOut(params.ButtonHideDuration * 1000);
+                }, params.ButtonHideDelay * 1000);
+            }
+
+            //aditional actions
+            window.proBtn  = {};
+            window.proBtn.hide = btn.hide;
+            window.proBtn.hideContent = function() {
+                $.fancybox.close();
+            };
+            window.proBtn.performAction = function() {
+                if (params.CampaignID!==null) {
+                    $.getJSON("https://pizzabtn.herokuapp.com/1/functions/performAction?DeviceType=web&DeviceUID="+GetDeviceUID()+"&X-ProBtn-Token="+XProBtnToken+"&CampaignID="+params.CampaignID+"&random="+Math.random()+"&callback=?",
+                        function(data) {
+                            //console.log(data);
+                        }
+                    );
+                }
+            };
+
+            btn.dragAnimate = function() {
+                pizzabtnImg.attr("src", params.ButtonDragImage);
+                setTimeout(function() {
+                    pizzabtnImg.css({
+                        'transition-duration': params.ButtonDragDuration + 's',
+                        '-webkit-transition-duration': params.ButtonDragDuration + 's',
+                        '-moz-transition-duration': params.ButtonDragDuration + 's',
+                        '-o-transition-duration': params.ButtonDragDuration + 's',
+                    });
+                    pizzabtnImg.css({
+                        opacity: params.ButtonDragOpacity,
+                        width: params.ButtonDragSize.W,
+                        height: params.ButtonDragSize.H
+                    });
+
+                }, params.ButtonDragDelay * 1000);
+            }
+
+            btn.undragAnimate = function() {
+                pizzabtnImg.attr("src", params.ButtonImage);
+                setTimeout(function() {
+                    pizzabtnImg.css({
+                        'transition-duration': params.ButtonUndragDuration + 's',
+                        '-webkit-transition-duration': params.ButtonUndragDuration + 's',
+                        '-moz-transition-duration': params.ButtonUndragDuration + 's',
+                        '-o-transition-duration': params.ButtonUndragDuration + 's',
+                    });
+                    pizzabtnImg.css({
+                        opacity: params.ButtonOpacity,
+                        width: params.ButtonSize.W,
+                        height: params.ButtonSize.H
+                    });
+
+                    //MinimizeWrapper();
+
+                }, params.ButtonUndragDelay * 1000);
+            }
+
+            btn.showHint = function() {
+                var me = this;
+                setTimeout(function() {
+                    hintText.css(hintTextStyle);
+                    me.hintTextActive = true;
+
+                    var textOffset = (($('#hintText').width() - params.ButtonSize.W)/2);
+                    $("#hintText").css("margin-left", "-"+textOffset+"px");
+
+                }, params.HintLaunchDelay * 1000);
+            }
+
+            btn.hideHint = function() {
+                var me = this;
+                hintText.makeInvisible();
+                setTimeout(function() {
+                    me.animateDuringHintHide();
+                }, 100)
+                me.hintTextActive = false;
+            }
+
+            btn.hideHintDelay = function() {
+                setTimeout(function() {
+                    hintText.makeInvisible();
+                }, params.HintLaunchDuration * 1000);
+            }
+
+            btn.animateDuringHintHide = function() {
+                var me = this;
+                var hintWidth = hintText.outerWidth();
+                var diffWidth = (hintWidth - params.ButtonSize.W) / 2;
+                if(diffWidth > 0) {
+                    me.css({
+                        width: params.ButtonSize.W,
+                        height: params.ButtonSize.H,
+                        left: me.position().left + diffWidth
+                    });
+                }
+            }
+
+            try {
+                var top = (window.innerHeight - (params.ButtonSize.H /2)) * (params.ButtonPosition.Y);
+                var left = ($('body').innerWidth() - (params.ButtonSize.W /2)) * (params.ButtonPosition.X) + $(window).scrollLeft() + 'px';
+                btn.css({
+                    left: left,
+                    top: top,
+                    position: 'absolute'
+                });
+            } catch(ex) {}
+
+            changeBodySize();
+
+            return btn;
+        }
+}
+})(jQuery);

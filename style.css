@@ -1,28 +1,31 @@
-/*html, body {
-	height: 100%;
+/*html, body { 
+    height: 100%; 
 }*/
 body {
     /*overflow: auto !important;*/
-    -ms-scroll-limit-x-max: 100% !important;
+	/*-ms-scroll-limit: auto !important;*/
+    /*-ms-scroll-limit-x-max: 100% !important;
     -ms-scroll-limit-x-min: auto !important;
     -ms-scroll-limit-y-max: 100% !important;
-    -ms-scroll-limit-y-min: auto !important;
-    /*-ms-scroll-limit: auto !important;*/
+    -ms-scroll-limit-y-min: auto !important;*/    
     touch-action: auto !important;
     -ms-touch-action: auto !important;
+	
+	-ms-scroll-limit-y-max: inherit !important;
+	overflow: inherit !important;
 }
 
 #pizzabtn_wrapper {
     position: fixed !important;
     z-index: 600 !important;
+	cursor: default !important;
 }
 #pizzabtn {
     z-index: 13000 !important;
 }
 
-.pizzabtn_button {
-
-	background: transparent !important; /*url('PizzaBtn/Images/gray.png') no-repeat !important;*/
+.pizzabtn_button {    
+    background: transparent !important; /*url('PizzaBtn/Images/gray.png') no-repeat !important;*/
 }
 
 #mainButtonImage {
@@ -37,13 +40,12 @@ body {
     z-index: 500 !important;
 }
 
-body {
-	margin: 0;
+body { 
+    margin: 0; 
 }
 #pizzabtn img {
     margin: 0 auto;
     display: block;
-    cursor: pointer;
 }
 #pizzabtn #hintText, #pizzabtn_wrapper #hintText {
     clear: both;
@@ -58,14 +60,14 @@ body {
 }
 
 /*@viewport{
-	height: device-height !important;
+    height: device-height !important;
 }
 @viewport{
-	width:device-width !important;
+    width:device-width !important;
 }
 @-ms-viewport{
-	height:device-height !important;
+    height:device-height !important;
 }
 @-ms-viewport{
-	width:device-width !important;
+    width:device-width !important;
 }*/
