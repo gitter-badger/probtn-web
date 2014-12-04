@@ -10,7 +10,21 @@ ProfitBtn
 
 ### How to add button to your site
 
-First of all, you should add (for example before ```</body>```):
+If you have jQuery at your site, add code
+
+```
+<script>
+$(document).ready(function() { 
+         $.getScript('https://pizzabtn.herokuapp.com/javascripts/probtn.js', function () {
+             $(document).ready(function() {
+                 $(document).StartButton({'mainStyleCss':'https://pizzabtn.herokuapp.com/stylesheets/probtn.css'});
+             });
+         });
+});
+</script>
+```
+
+If don't or you don't know, you can add (for example before ```</body>```) (without async call of this script):
 
 ```
 <script src="//cdnjs.cloudflare.com/ajax/libs/probtn/1.0.1/includepb.min.js"></script>
