@@ -166,7 +166,6 @@
     } catch(ex) {};
 }(this));
 
-
 (function ($) {
 
     function GetDeviceUID() {
@@ -223,12 +222,10 @@
 
     //load nessesary libraries and show button
     $.fn.StartButton = function (options) {
-        ////console.log("window.jscd.browserMajorVersion - "+window.jscd.browserMajorVersion);
         if ((window.jscd.browserMajorVersion>"8") || (window.jscd.browser!=="Microsoft Internet Explorer")) {
-        //if (true) {
 
         //plugin version
-        var mainVersion = "1.0";
+        var mainVersion = "1.1";
 
         var params = $.extend({
             TrackingLink: null,
@@ -244,7 +241,7 @@
             fancyboxCssPath: "//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css",
             mainStyleCss: "//pizzabtn.herokuapp.com/stylesheets/probtn.css",
             jqueryPepPath: "//cdn.jsdelivr.net/jquery.pep/0.6.3/jquery.pep.min.js",
-            buttonAnimationTimeAfterFancybox: 400,
+            buttonAnimationTimeAfterFancybox: 40,
 
             HideAfterFirstShow: false,
 
@@ -532,9 +529,10 @@
 
 
             var closeAfterOrientationChange = false;
+
             //when window is resized or changed orientation on device
             function onOrientationChange(e) {
-                ////console.log("orientationChange");
+                //console.log("orientationChange");
                 /*MaximizeWrapper(function() {
                     pizzabtn.css('left', '5px');
                     pizzabtn.css('top', '5px');
@@ -554,7 +552,6 @@
 			var settingsUrl = "";
 
 			$.get("http://ip-api.com/json", function(response) {
-
 				//если МТС, то "MobileOperator": "MTS RUS"
 				//если Билайн, то "MobileOperator": "Beeline"
 				var org = response.as.toLowerCase();
@@ -622,22 +619,21 @@
 
             function CheckInFrame() {
                 if (params.HideInFrame === true && window.self !== window.top)
-                {
-                    //////console.log("in frame");                    
+                { 
+                    //do nothing                
                 }
                 else
                 {
                     BeginButtonProcess();
                 }
             };
-            // XXX BEGIN BUTTON PROCESS
 
+            // XXX BEGIN BUTTON PROCESS
             function BeginButtonProcess() {
+                //add button styles
                 $('head').append('<link rel="stylesheet" href="'+params.mainStyleCss+'" type="text/css" />');
 
-				////console.log("window.jscd");
-				////console.log(window.jscd);
-
+                //add classes for ios devices
                 if (window.jscd.os==="iOS") {
                     $("body").addClass("btn_os_ios");
                     if (window.jscd.isiPad === true) {
@@ -648,9 +644,10 @@
                 }
 
 				if ((window.jscd.mobile)) {	
-					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: scroll !important;  } </style>");
+					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: scroll !important;   } </style>");
+                    /*.fancybox-iframe { min-width:  100% !important; width: 10px !important; position: absolute; overflow: visible; }*/
 				} else {
-					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hide !important; } </style>");
+					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hidden !important; } </style>");
 				};
 
 				//var closeButton = initCloseButton();
@@ -754,7 +751,7 @@
                         // cssEaseString: 'cubic-bezier(.42, 0, .58, 1)', // ease-in-out
                         // cssEaseString: 'cubic-bezier(0, 0, .58, 1)', // ease-out
                         cssEaseString: 'cubic-bezier(0, .50, .50, 1)',
-                        cssEaseDuration: 600,
+                        cssEaseDuration: 300,
                         velocityMultiplier: 1.0,
                         startThreshold: [1, 1],
                         droppable: '#closeButton',
@@ -805,6 +802,7 @@
                             //MinimizeWrapper();
 
                             if(!pizzabtn.moved) {
+                                //if button clicked                                
                                 MaximizeWrapper(function() {
                                     onButtonTap();
                                 });
@@ -829,6 +827,8 @@
                         //console.log("button tap");
                         //alert("button tap");
                         //MaximizeWrapper(function() {
+
+                        //$.fancybox.hideLoading();
 
                         var isMobileLandscape = (isLandscape() && window.jscd.mobile),
                             position          = pizzabtn.position(),
@@ -890,6 +890,15 @@
                             titlePosition: 'inside',
                             scrolling: 'no',
                             margin: margins,
+                            scrollOutside: true,
+                            //openEffect: 'none',
+                            //closeEffect: 'none',
+                            speedIn: 1000,
+                            openSpeed: 1000,
+                            closeSpeed: 0,
+                            speedOut: 0,
+                            openOpacity: false,
+                            //closeEffect: 'none',
                             //autoResize: true,
                             //autoScale: true,
                             padding: "0px",
@@ -900,20 +909,23 @@
                             iframe: {
                                 sandbox: "allow-same-origin allow-scripts allow-popups allow-forms",
                                 preload: false,
-                                scrolling: "yes"
+                                scrolling: "no"
                             },
                             helpers: {
                                 overlay: {
-                                  locked: false
+                                  locked: false,
+                                  speedIn: 0,
+		                          speedOut: 0,   // duration of fadeOut animation
+		                          showEarly: true,  // indicates if should be opened immediately or wait until the content is ready
                                 },
                                 title : { type : 'inside' }
                             },
                             beforeLoad: function() {
-
+                                
                                 $("#hintText").hide();
 
                                 $(".fancybox-iframe").first().attr("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
-
+                                //$("").first().css
 
                                 pizzabtn.css(positionObj.property, positionObj.finishValue);
                                 if (positionObj.property=='top') {
@@ -934,6 +946,9 @@
                             afterShow: function() {
                                 $(".fancybox-iframe").first().attr("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
                                 $(".fancybox-iframe").first().contents().find("html").css("visibility", "visible !important");
+                                $(".fancybox-iframe").first().attr("scrolling", "no");
+                                $(".fancybox-iframe").first().width($(".fancybox-inner").first().width());
+                                
 
                                 pizzabtn.bind("click", $.fancybox.close);
                             },
@@ -1027,7 +1042,6 @@
             };
 
             // XXX STATISTICS
-
             function SendStat(name, value, probtnId, currentDomain) {
                 $.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateUserStatistic?BundleID="+currentDomain+"&Version=1.0&DeviceType=web&CampaignID="+params.CampaignID+"&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
                 function(){}).done(function(){}).fail(function(){}).always(function(){});
@@ -1088,7 +1102,7 @@
         //console.log("IE8 not supported.");
     }
 
-            // XXX CONSTRUCTORS
+        // XXX CONSTRUCTORS
 
         // close button constructor
         function initCloseButton() {
@@ -1300,7 +1314,7 @@
 
             $("body").on('click', "#pizzabtn_wrapper", function() {
                //console.log("pizzabtn_wrapper clicked");
-               MinimizeWrapper(function() {}, params.MinimizeWrapperTime); 
+               MinimizeWrapper(function() {}, 0); 
             });
 
             var opts = {
@@ -1311,14 +1325,9 @@
                 position: "fixed"
             };
 
-            //console.log(params.TrackingLink);
-            //console.log(params.TrackingLink);
             if ((params.TrackingLink!==null) && (params.TrackingLink!==null) && (params.TrackingLink!=="")) {
                 opts['background'] = 'url('+params.TrackingLink+') no-repeat';
-                //console.log(opts);
             }
-
-            //console.dir(opts);
             pizzabtn_wrapper.css(opts);
 			
 			/*if ((window.jscd.mobile)) {				
