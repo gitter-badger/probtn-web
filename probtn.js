@@ -227,7 +227,7 @@
         //plugin version
         var mainVersion = "1.1";
 
-        var serverUrl = "//api.probtn.com";
+        var serverUrl = "//admin.probtn.com";
 
         var params = $.extend({
             TrackingLink: null,
