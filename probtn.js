@@ -227,6 +227,8 @@
         //plugin version
         var mainVersion = "1.1";
 
+        var serverUrl = "//api.probtn.com";
+
         var params = $.extend({
             TrackingLink: null,
             MinimizeWrapperTime: 600,
@@ -239,7 +241,7 @@
             domain: "",
             fancyboxJsPath: "//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.js",
             fancyboxCssPath: "//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css",
-            mainStyleCss: "//pizzabtn.herokuapp.com/stylesheets/probtn.css",
+            mainStyleCss: serverUrl+"/stylesheets/probtn.css",
             jqueryPepPath: "//cdn.jsdelivr.net/jquery.pep/0.6.3/jquery.pep.min.js",
             buttonAnimationTimeAfterFancybox: 40,
 
@@ -533,12 +535,12 @@
             //when window is resized or changed orientation on device
             function onOrientationChange(e) {
                 //console.log("orientationChange");
-                /*MaximizeWrapper(function() {
-                    pizzabtn.css('left', '5px');
-                    pizzabtn.css('top', '5px');
+                MaximizeWrapper(function() {
+                    pizzabtn.css('left', '20px');
+                    pizzabtn.css('top', '20px');
                     MinimizeWrapper(function(){
-                    }, params.MinimizeWrapperTime);                    
-                });*/
+                    }, 10);                    
+                });
 
                 if($.fancybox.isOpen) {
                     closeAfterOrientationChange = true;
@@ -568,9 +570,9 @@
 				//operator = "MTS RUS";
 
 			if (operator===null) {
-				settingsUrl = "https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&callback=?";
+				settingsUrl = serverUrl+"/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&callback=?";
 			} else {
-				settingsUrl = "https://pizzabtn.herokuapp.com/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&MobileOperator="+operator+"&callback=?";
+				settingsUrl = serverUrl+"/1/functions/getClientSettings?BundleID="+currentDomain+"&DeviceType=web&DeviceUID="+GetDeviceUID()+"&Location[Longitude]=0&Location[Latitude]=0&Version="+mainVersion+"&X-ProBtn-Token="+XProBtnToken+"&random="+Math.random()+"&MobileOperator="+operator+"&callback=?";
 			}
             $.getJSON(settingsUrl,
                 function(data) {
@@ -647,7 +649,7 @@
 					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: scroll !important;   } </style>");
                     /*.fancybox-iframe { min-width:  100% !important; width: 10px !important; position: absolute; overflow: visible; }*/
 				} else {
-					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hidden !important; } </style>");
+					$('head').append("<style type='text/css'> .fancybox-inner { -webkit-overflow-scrolling: touch !important; overflow: hide !important; } </style>");
 				};
 
 				//var closeButton = initCloseButton();
@@ -772,7 +774,7 @@
 								};
                                 SendStatisticsData("Moved", 1);
 
-                                MinimizeWrapper(function(){}, params.MinimizeWrapperTime);
+                                //MinimizeWrapper(function(){}, params.MinimizeWrapperTime);
                             });
                         },
                         drag: function() {
@@ -827,6 +829,8 @@
                         //console.log("button tap");
                         //alert("button tap");
                         //MaximizeWrapper(function() {
+                        console.log("button tap 1");
+                        MaximizeWrapper(function() { console.log("maximize tap"); });
 
                         //$.fancybox.hideLoading();
 
@@ -944,6 +948,15 @@
                                 $('html').css("overflow", "hidden");
                             },
                             afterShow: function() {
+                                var pizzabtn_wrapper = $("#pizzabtn_wrapper");
+                                var opts = {
+                                    width: $(window).width(),
+                                    height: $(window).height(),
+                                    position: "fixed"
+                                };
+                                console.log(opts);
+                                pizzabtn_wrapper.css(opts);
+
                                 $(".fancybox-iframe").first().attr("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms");
                                 $(".fancybox-iframe").first().contents().find("html").css("visibility", "visible !important");
                                 $(".fancybox-iframe").first().attr("scrolling", "no");
@@ -1033,6 +1046,17 @@
 								window.open(params.ContentURL, '_blank');
 							}, params.MinimizeWrapperTime);
 						} else {
+
+                            var pizzabtn_wrapper = $("#pizzabtn_wrapper");
+                            var opts = {
+                                width: $(window).width(),
+                                height: $(window).height(),
+                                position: "fixed"
+                            };
+                            console.log(opts);
+                            pizzabtn_wrapper.css(opts);
+                           
+
 							$.fancybox.open(fancyboxParams);
 						};
 
@@ -1043,7 +1067,7 @@
 
             // XXX STATISTICS
             function SendStat(name, value, probtnId, currentDomain) {
-                $.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateUserStatistic?BundleID="+currentDomain+"&Version=1.0&DeviceType=web&CampaignID="+params.CampaignID+"&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
+                $.getJSON(serverUrl+"/1/functions/updateUserStatistic?BundleID="+currentDomain+"&Version=1.0&DeviceType=web&CampaignID="+params.CampaignID+"&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
                 function(){}).done(function(){}).fail(function(){}).always(function(){});
             }
 
@@ -1082,7 +1106,7 @@
             /// This information would be rewriten by last resived data for deviceUID each time when it send to server
             ///
             function SendCustomStat(name, value, probtnId, currentDomain) {
-                $.getJSON("https://pizzabtn.herokuapp.com/1/functions/updateCustomStatistic?BundleID="+currentDomain+"&DeviceType=web&CampaignID="+params.CampaignID+"&Version=1.0&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
+                $.getJSON(serverUrl+"/1/functions/updateCustomStatistic?BundleID="+currentDomain+"&DeviceType=web&CampaignID="+params.CampaignID+"&Version=1.0&DeviceUID="+probtnId+"&localDomain="+realDomain+"&Statistic="+"{\"" + name + "\": \"" + value + "\"}&"+"X-ProBtn-Token=b04bb84b22cdacb0d57fd8f8fd3bfeb8ad430d1b&callback=?",
                 function(){}).done(function(){}).fail(function(){}).always(function(){});
             }
 
@@ -1467,7 +1491,7 @@
             };
             window.proBtn.performAction = function() {
                 if (params.CampaignID!==null) {
-                    $.getJSON("https://pizzabtn.herokuapp.com/1/functions/performAction?DeviceType=web&DeviceUID="+GetDeviceUID()+"&X-ProBtn-Token="+XProBtnToken+"&CampaignID="+params.CampaignID+"&random="+Math.random()+"&callback=?",
+                    $.getJSON(serverUrl+"/1/functions/performAction?DeviceType=web&DeviceUID="+GetDeviceUID()+"&X-ProBtn-Token="+XProBtnToken+"&CampaignID="+params.CampaignID+"&random="+Math.random()+"&callback=?",
                         function(data) {
                             //console.log(data);
                         }
