@@ -15,9 +15,9 @@ If you have jQuery at your site, add code
 ```
 <script>
 $(document).ready(function() { 
-         $.getScript('https://pizzabtn.herokuapp.com/javascripts/probtn.js', function () {
+         $.getScript('//cdn.probtn.com/probtn.js', function () {
              $(document).ready(function() {
-                 $(document).StartButton({'mainStyleCss':'https://pizzabtn.herokuapp.com/stylesheets/probtn.css'});
+                 $(document).StartButton({'mainStyleCss':'//cdn.probtn.com/style.css'});
              });
          });
 });
@@ -51,7 +51,7 @@ Q: What if I don't want that on every page on my site?
 
 A: You can manually add code
 ```
-jQuery(document).StartButton
+jQuery(document).StartButton({});
 ```
 only on nessesary pages. And if you use Joomla module, you can set in settings nessesary menu items, where button would be shown.
 
@@ -60,7 +60,7 @@ Q: Or what if I want different ones on different pages?
 A: Then you can manually override button settings. For example:
 ```
 jQuery(document).StartButton({
-		"mainStyleCss": "https://pizzabtn.herokuapp.com/stylesheets/probtn.css",
+		"mainStyleCss": "//cdn.probtn.com/style.css",
 		"ContentURL": "http://example.com"
 	});
 ```
