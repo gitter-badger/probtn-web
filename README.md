@@ -51,7 +51,7 @@ Q: What if I don't want that on every page on my site?
 
 A: You can manually add code
 ```
-jQuery(document).StartButton
+jQuery(document).StartButton({});
 ```
 only on nessesary pages. And if you use Joomla module, you can set in settings nessesary menu items, where button would be shown.
 
