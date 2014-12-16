@@ -81,6 +81,9 @@ You need to set "Button state" to off and add shortcode [floating_button] at nes
 
 == Changelog ==
 
+= 1.9.9=
+Updated pathes for probtn script and styles
+
 = 1.9.8=
 Added options check
 
