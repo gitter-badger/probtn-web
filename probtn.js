@@ -222,6 +222,7 @@
 
     //load nessesary libraries and show button
     $.fn.StartButton = function (options) {
+        $(window).bind("load", function () {
         if ((window.jscd.browserMajorVersion>"8") || (window.jscd.browser!=="Microsoft Internet Explorer")) {
 
         //plugin version
@@ -1122,9 +1123,9 @@
                 } catch(ex) {}
             }
         });
-    } else {
-        //console.log("IE8 not supported.");
-    }
+} else {
+    //console.log("IE8 not supported.");
+}
 
         // XXX CONSTRUCTORS
 
@@ -1591,5 +1592,7 @@
 
             return btn;
         }
+    });
 }
+
 })(jQuery);
